@@ -1,0 +1,601 @@
+// ================================================================================================
+//  File Name: custom-rtl.scss
+//  Description: RTL support SCSS file.
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
+//  Author: PIXINVENT
+//  Author URL: http://www.themeforest.net/user/pixinvent
+// ================================================================================================
+
+// Variables
+// ------------------------------
+
+// Core variables and mixins
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_mixins';
+@import 'bootstrap-extended/mixins';
+
+// Core variables and mixins overrides
+@import 'core/variables/variables';
+@import '~bootstrap/scss/_variables';
+
+// Overrides user variable
+@import 'core/variables/components-variables';
+
+html[dir='rtl'] {
+  // dashboard sales card
+  .sales-card {
+    .img-left {
+      left: 0;
+      right: auto;
+    }
+    .img-right {
+      right: 0;
+    }
+  }
+
+  // breadcrumb
+  .breadcrum-right {
+    .dropdown-toggle {
+      svg {
+        right: 0;
+      }
+    }
+  }
+
+  //breadcrumb-header
+  .breadcrumb-wrapper {
+    .breadcrumb {
+      .breadcrumb-item {
+        &:before {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  // Dropdown
+  .dropup-form {
+    .dropdown-menu {
+      min-width: 16rem;
+    }
+  }
+
+  // main menu icon
+  .main-menu {
+    ul.navigation-main {
+      .nav-item {
+        &:not(.open) {
+          svg.menu-toggle-icon {
+            transform: rotate(180deg);
+          }
+        }
+        &.open {
+          svg.menu-toggle-icon {
+            transform: rotate(90deg) !important;
+          }
+        }
+      }
+    }
+  }
+
+  // ag-grid
+  .ag-rtl {
+    direction: rtl;
+    .ag-header-select-all {
+      margin-right: 0 !important;
+      margin-left: 24px !important;
+    }
+    .ag-cell-value {
+      margin-left: 0 !important;
+      margin-right: 24px !important;
+    }
+  }
+
+  // Code
+  .component-code {
+    pre {
+      text-align: left;
+    }
+  }
+
+  // Recharts
+  .recharts-layer {
+    direction: ltr;
+  }
+
+  // context menu
+  .react-contexify {
+    z-index: 1031;
+  }
+
+  // Email
+  .email-application {
+    .content-right {
+      .app-fixed-search {
+        .sidebar-toggle {
+          margin-left: 0;
+        }
+      }
+      .email-detail-header,
+      .app-action {
+        .dropdown {
+          .dropdown-menu {
+            transform: translate3d(0px, 22px, 0px) !important;
+          }
+        }
+      }
+    }
+  }
+
+  // carousel
+  .carousel {
+    .carousel-control-prev,
+    .carousel-control-next {
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  // pagination
+  .pagination,
+  .vx-pagination {
+    .prev-item,
+    .previous,
+    .next-item,
+    .next {
+      a svg {
+        transform: rotate(180deg);
+      }
+    }
+    li:first-child,
+    li:last-child {
+      a span {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  // swiper
+  .swiper-container {
+    .swiper-button-next,
+    .swiper-button-prev {
+      &:after {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .swiper-container-cube {
+    &.swiper-container-rtl {
+      .swiper-slide {
+        transform-origin: 100% 0 !important;
+      }
+    }
+  }
+
+  //slider
+  .rc-slider-tooltip {
+    right: 50%;
+    width: 30px;
+  }
+  .rc-slider-vertical {
+    .rc-slider-dot {
+      right: -1px;
+    }
+  }
+  // Horizontal
+  .horizontal-layout {
+    .horizontal-menu-wrapper {
+      #main-menu-navigation {
+        .nav-item {
+          .has-sub {
+            svg.has-sub-arrow {
+              transform: rotate(180deg);
+            }
+          }
+        }
+        .dropdown-menu {
+          right: 0 !important;
+          left: auto !important;
+          top: 100% !important;
+          .dropdown-menu {
+            left: auto !important;
+            right: 100% !important;
+            top: 0 !important;
+          }
+        }
+      }
+    }
+  }
+
+  //  menu items alignment
+  .main-menu {
+    .navigation > li ul li > a {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  // Dropdown RTL Changes
+  .header-navbar .navbar-container ul.nav li.dropdown {
+    .dropdown-menu {
+      margin-top: 0;
+      &::before {
+        top: 1px;
+      }
+    }
+  }
+
+  .header-navbar {
+    .dropdown,
+    .dropup {
+      .dropdown-menu.dropdown-menu-right::before {
+        right: auto;
+        left: 0.5rem;
+      }
+    }
+  }
+
+  .dropdown,
+  .dropup {
+    .dropdown-menu {
+      right: auto !important;
+      top: 0 !important;
+      left: auto !important;
+
+      &.dropdown-menu-right {
+        left: auto !important;
+        right: 0 !important;
+
+        &::before {
+          right: 0.6rem;
+          left: auto;
+        }
+      }
+    }
+  }
+
+  // Input Group dropdown
+  .input-group {
+    .dropdown-menu.show {
+      top: 0 !important;
+      right: auto !important;
+      left: 0px !important;
+    }
+  }
+
+  // Context menu list css
+  .context-menu-list {
+    z-index: 1031 !important;
+  }
+
+  code[class*='language-'],
+  pre[class*='language-'] {
+    direction: ltr;
+  }
+
+  @media print {
+    code[class*='language-'],
+    pre[class*='language-'] {
+      text-shadow: none;
+    }
+  }
+
+  // Calendar
+  .app-calendar {
+    .calendar-navigation {
+      .btn {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  // Tooltip
+  .bs-tooltip-left .arrow::before,
+  .bs-tooltip-auto[x-placement^='left'] .arrow::before {
+    border-width: 0.4rem 0 0.4rem 0.4rem;
+    border-left-color: $tooltip-bg;
+  }
+
+  .bs-tooltip-left .arrow,
+  .bs-tooltip-auto[x-placement^='left'] .arrow {
+    right: 0;
+    left: auto;
+  }
+
+  .bs-tooltip-right .arrow::before,
+  .bs-tooltip-auto[x-placement^='right'] .arrow::before {
+    border-width: 0.4rem 0.4rem 0.4rem 0;
+    border-right-color: $tooltip-bg;
+  }
+
+  .bs-tooltip-right .arrow,
+  .bs-tooltip-auto[x-placement^='right'] .arrow {
+    left: 0;
+    right: auto;
+  }
+
+  // Popover Style
+  .popover {
+    right: auto !important;
+  }
+
+  // Perfect scrollbar RTL fix
+  body .ps__rail-y {
+    right: auto !important;
+    left: 1px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  html[dir='rtl'] {
+    .vertical-layout {
+      &.menu-collapsed {
+        .app-content {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  html[dir='rtl'] {
+    .vertical-layout {
+      .navbar-container {
+        .header-navbar {
+          ul.nav {
+            .nav-item {
+              &.dropdown {
+                .dropdown-menu {
+                  left: 12px !important;
+                  &.dropdown-menu-media {
+                    left: 15px !important;
+                    right: -15px !important;
+                  }
+                }
+
+                &.dropdown-notification {
+                  .dropdown-menu {
+                    transform: translate3d(-12px, 62px, 0px) !important;
+                    &.dropdown-cart {
+                      transform: translate3d(-12px, 59px, 0px) !important;
+                    }
+                  }
+                }
+                &.dropdown-user {
+                  .dropdown-menu {
+                    transform: translate3d(20px, 60px, 0px) !important;
+                  }
+                }
+                &.dropdown-language {
+                  .dropdown-menu {
+                    right: 28px !important;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  html[dir='rtl'] {
+    .header-navbar {
+      .dropdown {
+        &.dropdown-notification {
+          .dropdown-menu {
+            transform: translate3d(324px, 62px, 0px) !important;
+            &.dropdowncart {
+              transform: translate3d(335px, 62px, 0px) !important;
+            }
+          }
+        }
+        &.dropdown-user {
+          .dropdown-menu {
+            transform: translate3d(20px, 60px, 0px) !important;
+          }
+        }
+        &.dropdown-language {
+          .dropdown-menu {
+            transform: translate3d(114px, 64px, 0px) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  html[dir='rtl'] {
+    .app-content {
+      .header-navbar {
+        .dropdown {
+          &.dropdown-notification {
+            .dropdown-menu {
+              transform: translate3d(26px, 59px, 0px) !important;
+              &.dropdown-cart {
+                transform: translate3d(26px, 59px, 0px) !important;
+              }
+            }
+          }
+          &.dropdown-user {
+            .dropdown-menu {
+              left: 0 !important;
+              right: 28px !important;
+            }
+          }
+          &.dropdown-language {
+            .dropdown-menu {
+              transform: translate3d(26px, 64px, 0px) !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Custom CSS
+
+.browser-states {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-browser-states .browser-states:not(:first-child) {
+  margin-top: 1.7rem;
+}
+
+.custom-tooltip {
+  position: absolute;
+  width: 150px;
+  height: 70px;
+  border: 1px solid cornflowerblue;
+  overflow: hidden;
+  pointer-events: none;
+  transition: opacity 1s;
+}
+
+.custom-tooltip.ag-tooltip-hiding {
+  opacity: 0;
+}
+
+.custom-tooltip p {
+  margin: 5px;
+  white-space: nowrap;
+}
+
+.custom-tooltip p:first-of-type {
+  font-weight: bold;
+}
+
+.form-group .select__menu {
+  z-index: 5;
+}
+
+.small-cell {
+  padding-right: 0 !important;
+  .ag-cell-value {
+    margin-left: 14px !important;
+  }
+}
+
+@media (max-width: 1400px) {
+  .sales-summary {
+    .card .title-section h2 {
+      font-size: 1.4rem;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.form-control:disabled,
+.form-control[readonly]:not(.input) {
+  background-color: hsl(0, 0%, 95%);
+  border-color: hsl(0, 0%, 90%);
+  color: hsl(0, 0%, 60%);
+}
+
+.dropzone {
+  cursor: pointer;
+}
+
+.input-group-prepend .btn,
+.input-group-append .btn {
+  z-index: 0 !important;
+}
+
+.blurry-text {
+  filter: blur(0.6rem);
+  // color: transparent !important;
+  // text-shadow: 0 0 5px rgba(92, 211, 143, 0.5);
+}
+
+.ag-root-wrapper.ag-layout-normal {
+  overflow-x: scroll;
+  // overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0,0,0,.5);
+  box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+.ag-body-horizontal-scroll {
+  margin-bottom: 55px;
+}
+
+.custom-flatpickr {
+  max-width: 0px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.card-pending {
+  background-color: rgba(242,47,47,0.5);
+}
+
+.card-suggestion {
+  background-color: rgba(242,227,47,0.5);
+}
+
+.card-conciliated-ofx {
+  background-color: rgba(185,245,108,0.5);
+}
+
+.card-conciliated-iuli {
+  background-color: rgba(245,0,245,0.5);
+}
+
+.chatbot-content {
+  right: 30px;
+  position: fixed;
+  width: 400px;
+  height: 600px;
+  bottom: 11%;
+  z-index: 99;
+  max-width: 84%;
+  max-height: 84%;
+}
+
+.chatbot-content iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.btn.btn-icon svg,
+.btn.btn-icon div {
+  height: 2rem;
+  width: 2rem;
+}
+
+.rc-slider-tooltip-hidden {
+  display: block !important;
+}
+
+.rc-slider-tooltip-inner {
+  padding: 10px 10px !important;
+  height: 32px !important;
+  width: 200px;
+  background-color: #FFFC !important;
+  font-weight: bold;
+}

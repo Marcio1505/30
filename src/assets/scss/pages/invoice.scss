@@ -1,0 +1,112 @@
+// ================================================================================================
+//  File Name: invoice.scss
+//  Description: Invoice Layout page layouts SCSS.
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Vuexy React Admin Template
+//  Version: 1.0
+//  Author: PIXINVENT
+//  Author URL: http://www.themeforest.net/user/pixinvent
+// ================================================================================================
+
+// Core variables and mixins
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/mixins';
+@import '../bootstrap-extended/mixins';
+
+// Load variable overrides
+@import '../core/variables/variables';
+@import '~bootstrap/scss/_variables.scss';
+
+// Overrides user variable
+@import '../core/variables/components-variables';
+
+.invoice-page {
+  padding: 2.2rem;
+
+  .recipient-info,
+  .company-info,
+  .company-contact,
+  .recipient-contact {
+    p {
+      line-height: 2;
+      margin-bottom: 0;
+    }
+  }
+
+  .invoice-items-table,
+  .invoice-total-table {
+    table {
+      // border: 2px solid $body-bg;
+      border: 2px solid #ccc;
+      color: #000;
+      th,
+      td {
+        padding: 0.5rem;
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .invoice-items-table {
+    table {
+      tbody {
+        border-top: 3px solid #ccc;
+      }
+      tr {
+        border-top: 1px solid #888;
+      }
+      th,
+      td {
+        border-top: none;
+        padding: 0.75rem;
+      }
+    }
+    .badge.category-badge {
+      width: 100px;
+      margin-right: 10px;
+      padding: 7px;
+      border-radius: 50px;
+      background-color: #fff;
+      border: 1px solid #000;
+      color: #000;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+}
+
+// media query for print
+@media print {
+  body {
+    visibility: hidden;
+  }
+  .content.app-content {
+    margin-left: 0;
+  }
+  .main-menu,
+  .header-navbar-shadow,
+  .header-navbar,
+  .content-header,
+  .invoice-header {
+    display: none;
+  }
+  .invoice-page {
+    visibility: visible;
+    background: black;
+  }
+  .content-wrapper,
+  .app-content,
+  .invoice-page,
+  .card-body,
+  .invoice-wrapper {
+    padding: 0;
+    margin: 0;
+  }
+}
+@page {
+  //  margin for print page
+  margin: 0;
+  padding: 0;
+}
