@@ -8,12 +8,12 @@ export const ProductBasicRegister = () => (
     <Row>
       <Col sm="6">
         <FormGroup>
-          <Label for="nome">Nome</Label>
+          <Label for="nome">Nome *</Label>
           <Field
             id="nome"
             name="nome"
             className="form-control"
-            placeholder="Seu nome"
+            placeholder="Nome do produto"
           />
           <ErrorMessage name="nome" />
         </FormGroup>
@@ -98,7 +98,7 @@ export const ProductBasicRegister = () => (
     </Row>
     <Row>
       <Col sm="6">
-        <Label for="tipo">Tipo</Label>
+        <Label for="tipo">Tipo *</Label>
         <Field as="select" id="tipo" name="tipo" className="form-control">
           <option value="">Selecione o tipo</option>
           <option value="tipo1">Tipo 1</option>
@@ -115,7 +115,11 @@ export const ProductBasicRegister = () => (
         </Field>
       </Col>
     </Row>
-    <Row>
+    <Row
+      style={{
+        marginTop: '10px',
+      }}
+    >
       <Col sm="3">
         <Label>
           <Field name="ativarDesativar">

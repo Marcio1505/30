@@ -33,7 +33,7 @@ export const ProductTributosRegister = () => (
     <Row form>
       <Col md={6}>
         <FormGroup>
-          <Label for="NCM">NCM</Label>
+          <Label for="NCM">NCM * </Label>
           <Field type="text" name="NCM" id="NCM" className="form-control" />
           <ErrorMessage name="NCM" component="div" />
         </FormGroup>
@@ -54,7 +54,7 @@ export const ProductTributosRegister = () => (
     <Row form>
       <Col md={6}>
         <FormGroup>
-          <Label for="ICMSCST">ICMS CST</Label>
+          <Label for="ICMSCST">ICMS CST *</Label>
           <Field
             type="text"
             name="ICMSCST"
@@ -80,7 +80,7 @@ export const ProductTributosRegister = () => (
     <Row form>
       <Col md={6}>
         <FormGroup>
-          <Label for="PISCIST">PIS CIST</Label>
+          <Label for="PISCIST">PIS CIST *</Label>
           <Field
             type="text"
             name="PISCIST"
@@ -106,7 +106,7 @@ export const ProductTributosRegister = () => (
     <Row form>
       <Col md={6}>
         <FormGroup>
-          <Label for="COFINSCST">COFINS CST</Label>
+          <Label for="COFINSCST">COFINS CST *</Label>
           <Field
             type="text"
             name="COFINSCST"
@@ -132,7 +132,7 @@ export const ProductTributosRegister = () => (
     <Row form>
       <Col md={6}>
         <FormGroup>
-          <Label for="IPICIST">IPI CIST</Label>
+          <Label for="IPICIST">IPI CIST *</Label>
           <Field
             type="text"
             name="IPICIST"
@@ -197,7 +197,7 @@ export const ProductTributosRegister = () => (
     <Row form>
       <Col md={6}>
         <FormGroup>
-          <Label for="CFOPVendaEstado">CFOP Venda no estado</Label>
+          <Label for="CFOPVendaEstado">CFOP Venda no estado *</Label>
           <Field
             type="text"
             name="CFOPVendaEstado"
@@ -209,7 +209,7 @@ export const ProductTributosRegister = () => (
       </Col>
       <Col md={6}>
         <FormGroup>
-          <Label for="CFOPDevolucaoEstado">CFOP Devolução no estado</Label>
+          <Label for="CFOPDevolucaoEstado">CFOP Devolução no estado *</Label>
           <Field
             type="text"
             name="CFOPDevolucaoEstado"
@@ -236,7 +236,7 @@ export const ProductTributosRegister = () => (
       <Col md={6}>
         <FormGroup>
           <Label for="CFOPDevolucaoForaEstado">
-            CFOP Devolução fora do estado
+            CFOP Devolução fora do estado *
           </Label>
           <Field
             type="text"

@@ -95,35 +95,6 @@ const DrePage = ({ currentCompanyId, currentCompany, currentUser }) => {
     setInitialized(true);
   };
 
-  const initialValues = {
-    statement_type_id: params?.statement_type_id || 1,
-    date_range: params?.date_range || [
-      moment().format('YYYY-MM-01'),
-      moment().format('YYYY-MM-') + moment().daysInMonth(),
-    ],
-    date_from: params?.date_from || moment().format('YYYY-MM-01'),
-    date_to:
-      params?.date_to || moment().format('YYYY-MM-') + moment().daysInMonth(),
-    project_id: params?.project_id || '',
-    cost_center_id: params?.cost_center_id || '',
-    projects_ids: params?.projects_ids || [],
-    cost_centers_ids: params?.cost_centers_ids || [],
-    bank_accounts_ids: params?.bank_accounts_ids || [],
-  };
-
-  const validationSchema = Yup.object().shape({
-    statement_type_id: Yup.string().required(
-      intl.formatMessage({ id: 'errors.required' })
-    ),
-  });
-
-  const formik = useFormik({
-    onSubmit,
-    initialValues,
-    validationSchema,
-    enableReinitialize: true,
-  });
-
   const onSubmit = () => {
     const date_from =
       typeof formik.values.date_range[0] === 'string'
@@ -158,6 +129,35 @@ const DrePage = ({ currentCompanyId, currentCompany, currentUser }) => {
       params,
     });
   };
+
+  const initialValues = {
+    statement_type_id: params?.statement_type_id || 1,
+    date_range: params?.date_range || [
+      moment().format('YYYY-MM-01'),
+      moment().format('YYYY-MM-') + moment().daysInMonth(),
+    ],
+    date_from: params?.date_from || moment().format('YYYY-MM-01'),
+    date_to:
+      params?.date_to || moment().format('YYYY-MM-') + moment().daysInMonth(),
+    project_id: params?.project_id || '',
+    cost_center_id: params?.cost_center_id || '',
+    projects_ids: params?.projects_ids || [],
+    cost_centers_ids: params?.cost_centers_ids || [],
+    bank_accounts_ids: params?.bank_accounts_ids || [],
+  };
+
+  const validationSchema = Yup.object().shape({
+    statement_type_id: Yup.string().required(
+      intl.formatMessage({ id: 'errors.required' })
+    ),
+  });
+
+  const formik = useFormik({
+    onSubmit,
+    initialValues,
+    validationSchema,
+    enableReinitialize: true,
+  });
 
   const dre_types = [
     {
