@@ -211,6 +211,8 @@ const navigationConfig = [
     type: 'item',
     icon: <Icon.Package size={20} />,
     permissions: ['admin'],
+    navLink: '/stock',
+    permissioniuli: 'stock.index',
   },
   {
     id: 'dashboard',

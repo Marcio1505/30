@@ -75,6 +75,7 @@ const BasicListTable = ({
   setOrder,
   initialized,
   customMenu,
+  hasSearch,
 }) => {
   const gridApi = useRef();
   const gridColumnApi = useRef();
@@ -273,14 +274,17 @@ const BasicListTable = ({
                   </span>
                 </Button>
               )}
-              <Input
-                className="w-100 mr-1 mb-1 mb-sm-0"
-                type="text"
-                placeholder="buscar..."
-                readOnly={!initialized}
-                onChange={(e) => setSearchBy(e.target.value)}
-                value={searchBy}
-              />
+              {Boolean(hasSearch) && (
+                <Input
+                  className="w-100 mr-1 mb-1 mb-sm-0"
+                  type="text"
+                  placeholder="buscar..."
+                  readOnly={!initialized}
+                  onChange={(e) => setSearchBy(e.target.value)}
+                  value={searchBy}
+                />
+              )}
+
               {Boolean(hasActions) && (
                 <div className="dropdown actions-dropdown">
                   <UncontrolledButtonDropdown>
@@ -490,6 +494,7 @@ BasicListTable.propTypes = {
   setOrder: PropTypes.func,
   initialized: PropTypes.bool,
   customMenu: PropTypes.element,
+  hasSearch: PropTypes.bool,
 };
 
 BasicListTable.defaultProps = {
@@ -529,6 +534,7 @@ BasicListTable.defaultProps = {
   setOrder: () => null,
   initialized: false,
   customMenu: null,
+  hasSearch: true,
 };
 
 export default BasicListTable;

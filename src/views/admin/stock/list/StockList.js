@@ -27,7 +27,7 @@ import 'flatpickr/dist/themes/light.css';
 import '../../../../assets/scss/plugins/forms/flatpickr/flatpickr.scss';
 import '../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss';
 import '../../../../assets/scss/pages/users.scss';
-
+import { columnDefs } from './TableConfig';
 import { formatMoney } from '../../../../utils/formaters';
 import { exportSalesXLS } from '../../../../utils/sales/exporters';
 
@@ -491,61 +491,6 @@ const StockList = ({ companies, filter, setFilters }) => {
     setInitialized(true);
   };
 
-  const columnDefs = [
-    {
-      headerName: 'ID',
-      field: 'id',
-      width: 80,
-    },
-    {
-      headerName: 'Cód. Externo',
-      field: 'external_code',
-    },
-    {
-      headerName: 'Produto',
-      field: 'product_name',
-      width: 130,
-    },
-    {
-      headerName: 'Unidade',
-      field: 'unit',
-      width: 150,
-    },
-    {
-      headerName: 'Valor Unitário',
-      field: 'unit_price',
-      cellRendererFramework: (params) =>
-        formatMoney(params.data.unit_price, true) || '-',
-      width: 150,
-    },
-    {
-      headerName: 'Média das 3',
-      field: 'average_price',
-      cellRendererFramework: (params) =>
-        formatMoney(params.data.average_price, true) || '-',
-      width: 120,
-    },
-    {
-      headerName: 'CTP',
-      field: 'ctp',
-      width: 100,
-    },
-    {
-      headerName: 'Total em Estoque',
-      field: 'total_stock',
-    },
-    {
-      headerName: 'Saldo em Estoque',
-      field: 'stock_balance',
-    },
-    {
-      headerName: 'Ações',
-      field: 'actions',
-      width: 100,
-      cellRendererFramework: ({ data }) => <div className="d-flex"></div>,
-    },
-  ];
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -565,76 +510,57 @@ const StockList = ({ companies, filter, setFilters }) => {
   }, [filter]);
 
   return (
-    <>
-      <Row className="app-user-list">
-        <PermissionGate permissions="companies.sales.index">
-          <Col md="6" sm="12">
-            <Breadcrumbs
-              breadCrumbTitle={<FormattedMessage id="stock" />}
-              breadCrumbActive={<FormattedMessage id="button.list.stock" />}
-            />
-          </Col>
+    <Row className="app-user-list">
+      <PermissionGate permissions="companies.sales.index">
+        <Col md="6" sm="12">
+          <Breadcrumbs
+            breadCrumbTitle={<FormattedMessage id="stock" />}
+            breadCrumbActive={<FormattedMessage id="button.list.stock" />}
+          />
+        </Col>
 
-          <Col sm="12">
-            <StockSummary summaryData={summaryData} />
-            <Card>
-              <CardBody>
-                <NewBasicListTable
-                  customMenu={<Button>Exportar Excel</Button>}
-                  sortModel={[
-                    {
-                      colId: 'competency_date',
-                      sort: 'desc', // 'asc'
-                    },
-                  ]}
-                  isActiveFilterByDate={
-                    filter.filterSaleCompetencyDate.length === 2
-                  }
-                  isActiveFilterByStatus={filter.filterSaleStatuses.length > 1}
-                  isActiveFilterByProduct={filter.filterSaleProducts.length > 1}
-                  isActiveFilterByBankAccount={
-                    filter.filterSaleBankAccounts.length > 1
-                  }
-                  isActiveFilterBySaleSource={
-                    filter.filterSaleSources.length > 1
-                  }
-                  isActiveFilterByInvoiceDate={
-                    filter.filterInvoiceDate.length === 2
-                  }
-                  isActiveFilterByInvoiceStatus={
-                    filter.filterInvoiceStatus &&
-                    filter.filterInvoiceStatus !== 'all'
-                  }
-                  filter={filter}
-                  setFilters={setFilters}
-                  handleSummaryData={handleSummaryData}
-                  handleStoreGroupInvoice={handleStoreGroupInvoice}
-                  handleEditGroup={handleEditGroupSale}
-                  handleExportXLS={handleExportSalesXLS}
-                  toggleShowModalFilter={() =>
-                    setShowModalFilterSale(!showModalFilterSale)
-                  }
-                  rowData={rowData}
-                  columnDefs={columnDefs}
-                  defaultColDef={{
-                    sortable: true,
-                    resizable: true,
-                  }}
-                  fetchData={getSales}
-                  pageCount={pageCount}
-                  dataCount={dataCount}
-                  dataPerPage={dataPerPage}
-                  setDataPerPage={setDataPerPage}
-                  initialized={initialized}
-                  handleDestroyGroup={handleDestroyGroupSale}
-                  dataType="STOCK"
-                />
-              </CardBody>
-            </Card>
-          </Col>
-        </PermissionGate>
-      </Row>
-    </>
+        <Col sm="12">
+          <StockSummary summaryData={summaryData} />
+          <Card>
+            <CardBody>
+              <NewBasicListTable
+                hasSearch={false}
+                customMenu={<Button color="primary">Exportar Excel</Button>}
+                sortModel={[
+                  {
+                    colId: 'competency_date',
+                    sort: 'desc', // 'asc'
+                  },
+                ]}
+                filter={filter}
+                setFilters={setFilters}
+                handleSummaryData={handleSummaryData}
+                handleStoreGroupInvoice={handleStoreGroupInvoice}
+                handleEditGroup={handleEditGroupSale}
+                handleExportXLS={handleExportSalesXLS}
+                toggleShowModalFilter={() =>
+                  setShowModalFilterSale(!showModalFilterSale)
+                }
+                rowData={rowData}
+                columnDefs={columnDefs}
+                defaultColDef={{
+                  sortable: true,
+                  resizable: true,
+                }}
+                fetchData={getSales}
+                pageCount={pageCount}
+                dataCount={dataCount}
+                dataPerPage={dataPerPage}
+                setDataPerPage={setDataPerPage}
+                initialized={initialized}
+                handleDestroyGroup={handleDestroyGroupSale}
+                dataType="STOCK"
+              />
+            </CardBody>
+          </Card>
+        </Col>
+      </PermissionGate>
+    </Row>
   );
 };
 
