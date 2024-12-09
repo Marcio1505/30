@@ -145,21 +145,17 @@
   "Raise Support": "Levantar Suporte",
   "Change Log": "Log de alterações",
   "text": "O sésamo do bolo agarra dinamarquês do pão-de-espécie do queque eu amo o pão-de-espécie. Torta de torta de maçã jujuba chupa chups muffin halvah pirulito. Ameixa do açúcar do maçapão do tiramisu do bolo da aveia do bolo de chocolate. Bolo de aveia de torta doce donut dragée fruitcake algodão doce gotas de limão.",
-
   "Dre": "Dre",
   "dre": "Dre",
   "dre.date_range": "Período",
   "dre.date_from": "Data Início",
   "dre.date_to": "Data Fim",
   "dre.type": "Tipo",
-
   "Dfc": "Dfc",
   "dfc": "Dfc",
-
   "statement.dfc": "DFC",
   "statement.dre": "DRE",
   "statement.detailed-statement": "Fluxo de Caixa",
-
   "dashboard": "Painel",
   "dashboard.payments_today": "Contas a Pagar hoje",
   "dashboard.receivables_today": "Contas a Receber hoje",
@@ -167,12 +163,10 @@
   "dashboard.bank_accounts.subtitle": "Minhas Contas Bancárias",
   "dashboard.month_sales": "Vendas Mensais",
   "dashboard.cash_flow": "Fluxo de Caixa",
-
   "dashboard.sales": "Dashboard de Vendas Operação",
   "dashboard.financial": "Dashboard Financeiro Estratégico",
   "dashboard.sales.menu": "Dash Vendas",
   "dashboard.financial.menu": "Dash Financeiro",
-
   "button.save": "Salvar",
   "button.save.reconcile": "Salvar e Conciliar",
   "button.cancel": "Cancelar",
@@ -181,109 +175,86 @@
   "button.print": "Imprimir",
   "button.import": "Importar",
   "button.remove": "Remover",
-
   "button.create.company": "Adicionar Empresa",
   "button.edit.company": "Editar Empresa",
   "button.list.company": "Listar Empresas",
-
   "button.create.company_user": "Adicionar Usuário",
   "button.edit.company_user": "Editar Usuário",
   "button.list.company_user": "Listar Usuários",
-
   "button.create.project": "Adicionar Projeto",
   "button.edit.project": "Editar Projeto",
   "button.list.project": "Listar Projetos",
-
   "button.create.cost_center": "Adicionar Centro de Custo",
   "button.edit.cost_center": "Editar Centro de Custo",
   "button.list.cost_center": "Listar Centros de Custo",
-
   "button.create.budget": "Adicionar Orçamento",
   "button.edit.budget": "Editar Orçamento",
   "button.list.budget": "Listar Orçamentos",
-
   "button.create.bank_account": "Adicionar Conta Bancária",
   "button.edit.bank_account": "Editar Conta Bancária",
   "button.list.bank_account": "Listar Contas Bancárias",
   "button.statement.bank_account": "Extrato de Conta Bancária",
   "button.import.bank_account": "Conciliação Bancária",
   "button.importofx.bank_account": "Importar OFX",
-  "button.import.statement.plataform": "Importar Extrato",  
+  "button.import.statement.plataform": "Importar Extrato",
   "button.ignoredofx.bank_account": "Ignorados",
   "button.reconcilliate": "Conciliar",
   "button.reconcilliate.desvinculed": "Desconciliar",
   "button.reconcilliate.create": "Adicionar e Conciliar",
   "reconciled.differences": "Tratar Diferença:",
-
   "reconciled.transaction": "Transações Conciliadas",
   "reconciled.not.transaction": "Transações Não Conciliadas",
   "reconciled.transactions.bank": "Transações do Banco",
   "reconciled.transactions.iuli": "Transações do Iuli",
-
   "button.load.statement.dfc": "Carregar DFC",
   "button.load.statement.dre": "Carregar DRE",
   "button.load.statement.detailed": "Carregar",
   "button.load": "Carregar",
-
   "button.create.transfer": "Nova Transferência",
   "button.edit.transfer": "Editar Transferência",
   "button.list.transfer": "Listar Transferências",
-
   "button.create.wire-transfer": "Nova Solicitação de Saque",
   "button.edit.wire-transfer": "Editar Solicitação de Saques",
   "button.list.wire-transfer": "Listar Solicitações de Saques",
-
   "button.create.receivable": "Adicionar Conta a Receber",
   "button.edit.receivable": "Editar Conta a Receber",
   "button.list.receivable": "Listar Contas a Receber",
   "button.import.receivable": "Importar Contas a Receber",
   "button.report.receivable": "Relatório Contas a Receber",
-
   "button.create.payable": "Adicionar Conta a Pagar",
   "button.edit.payable": "Editar Conta a Pagar",
   "button.list.payable": "Listar Contas a Pagar",
   "button.import.payable": "Importar Contas a Pagar",
   "button.report.payable": "Relatório Contas a Pagar",
-  
   "button.create.supplier": "Adicionar Fornecedor",
   "button.edit.supplier": "Editar Fornecedor",
   "button.list.supplier": "Listar Fornecedor",
-
   "button.create.client": "Adicionar Cliente",
   "button.edit.client": "Editar Cliente",
   "button.list.client": "Listar Clientes",
-
   "button.create.product": "Adicionar Produto",
   "button.edit.product": "Editar Produto",
   "button.list.product": "Listar Produtos",
-
   "button.create.product_link": "Adicionar Link de Pagamento",
   "button.edit.product_link": "Editar Link de Pagamento",
   "button.list.product_link": "Listar Links de Pagamentos",
-
   "button.create.bankAccount": "Adicionar nova conta bancária",
-
   "button.create.sale": "Adicionar Venda",
   "button.sincronizesales.sale": "Sincronizar Vendas",
   "button.edit.sale": "Editar Venda",
   "button.list.sale": "Listar Vendas",
   "button.import.sale": "Importar Vendas",
-
   "button.create.purchase": "Adicionar Compra",
   "button.edit.purchase": "Editar Compra",
   "button.list.purchase": "Listar Compras",
-  
   "button.dowloadPdf.invoice": "Baixar PDFs",
   "button.dowloadXml.invoice": "Baixar XMLs",
   "button.invoice.downloadExcel": "Exportar Excel",
-
   "button.create.iuli_plan": "Adicionar Plano Iuli",
   "button.edit.iuli_plan": "Editar Plano Iuli",
   "button.list.iuli_plan": "Listar Planos Iuli",
-
   "button.edit.iuli_payment": "Editar Pagamento Iuli",
   "button.list.iuli_payment": "Listar Pagamentos Iuli",
-
   "supplier": "Fornecedor",
   "suppliers": "Fornecedores",
   "suppliers.list": "Fornecedores",
@@ -292,7 +263,6 @@
   "suppliers.address": "Endereço",
   "suppliers.contacts": "Contatos",
   "suppliers.bank": "Dados Bancários",
-
   "bank-account": "Conta Bancária",
   "bank-accounts": "Contas Bancárias",
   "bank_accounts": "Contas Bancárias",
@@ -321,7 +291,6 @@
   "bank-account.api_client_secret": "Client Secret",
   "bank-account.api_file_cert_digital": "Certificado Digital do Banco",
   "bank-account.api_file_ssl_key": "Chave SSL do Banco",
-
   "project": "Projeto",
   "projects": "Projetos",
   "projects.list": "Projetos",
@@ -334,7 +303,6 @@
   "projects.forecasted_revenues": "Receita Prevista",
   "projects.forecasted_expenses": "Despesa Prevista",
   "projects.status": "Status",
-
   "cost_center": "Centro de Custo",
   "cost_centers": "Centros de Custo",
   "cost_centers.list": "Centros de Custo",
@@ -343,7 +311,6 @@
   "cost_centers.abbreviation": "Abreviatura",
   "cost_centers.description": "Descrição",
   "cost_centers.status": "Status",
-
   "budget": "Orçamento",
   "budgets": "Orçamentos",
   "budgets.list": "Orçamentos",
@@ -357,7 +324,6 @@
   "budgets.status": "Ativar/Desativar",
   "budgets.status.activate": "Ativar",
   "budgets.status.inactivate": "Desativar",
-
   "product": "Produto",
   "products": "Produtos",
   "products.list": "Produtos",
@@ -418,8 +384,6 @@
   "products.aliquot": "Alíquota ISS (%)",
   "products.percentage_product": "Percentual de Produto/Serviço",
   "products.percentage_price": "Percentual do valor para emissão de NF",
-
-
   "product_link": "Link de Venda",
   "product_links": "Links de Pagamentos",
   "product_links.list": "Links de Pagamentos",
@@ -438,7 +402,6 @@
   "product_links.months_credit": "Tempo de Liberação (Meses)",
   "product_links.status": "Ativar/Desativar",
   "product_links.iuli_plan_id": "Plano Iuli",
-
   "client": "Cliente",
   "clients": "Clientes",
   "clients.list": "Clientes",
@@ -447,13 +410,11 @@
   "clients.address": "Endereço",
   "clients.contacts": "Contatos",
   "clients.bank": "Dados Bancários",
-
   "company": "Empresa",
   "company.type": "Tipo",
   "company.person_type": "Tipo",
   "company.business_type": "Segmento",
   "company.allow_notifications": "Receber Notificações",
-
   "company.category": "Categoria",
   "company.name": "Nome",
   "company.company_name": "Razão Social",
@@ -480,7 +441,6 @@
   "company.aliquot": "Alíquota ISS (%)",
   "company.cnae": "CNAE",
   "company.description_service": "Descrição do serviço",
-
   "company.asaas_email": "E-mail Alternativo",
   "company.placeholder.asaas_email": "Deixe em branco ou Insira E-mail alternativo da empresa caso solicitado",
   "company.allow_hotmart": "Vincular conta ao hotmart",
@@ -488,32 +448,22 @@
   "company.hotmart_client_secret": "Client Secret",
   "company.hotmart_basic": "Basic",
   "company.hotmart_webhook_token": "Webhook Token Hotmart",
-  
   "company.guru_account_token": "Token API Guru",
   "company.guru_webhook_token": "Webhook Token Guru",
-
   "company.provi_account_token": "Token API Provi",
   "company.provi_webhook_token": "Webhook Token Provi",
-
   "company.ticto_webhook_token": "Webhook Token Ticto",
-    
   "company.kiwify_webhook_token": "Webhook Token Kiwify",
-    
   "company.tmb_webhook_token": "Webhook Token TMB",
-    
   "company.hubla_webhook_token": "Webhook Token Hubla",
-    
   "company.dominio_accountant_token": "Token Fornecido pelo Contador",
-    
   "company.eduzz_public_key": "Public Key da API Eduzz",
   "company.eduzz_api_key": "Api Key da API Eduzz",
   "company.eduzz_email_key": "Email da conta na Eduzz",
   "company.eduzz_webhook_token": "Webhook Token Eduzz",
-
   "company.cademi_domain": "Domínio Cademí",
   "company.cademi_token": "Token Cademí",
   "company.cademi_api_key": "Api Key da Cademí",
-
   "company.enotas_nfs_serie": "Série NFS-e",
   "company.placeholder.enotas_nfs_serie": "Insira a Série NFS-e ou deixe em branco",
   "company.enotas_nfs_rps": "Número RPS atual",
@@ -526,14 +476,11 @@
   "company.placeholder.enotas_nfe_series": "Insira a Série NF-e ou deixe em branco",
   "company.enotas_nfe_batch": "Lote NF-e",
   "company.placeholder.enotas_nfe_batch": "Insira o Lote NF-e ou deixe em branco",
-  
-  "company.certificate_name":"Nome",
-  "company.certificate_valid":"Valido até",
-  "company.certificate_password":"Senha",
-  "company.certificate_file":"Certificado Digital",
-
+  "company.certificate_name": "Nome",
+  "company.certificate_valid": "Valido até",
+  "company.certificate_password": "Senha",
+  "company.certificate_file": "Certificado Digital",
   "company.exterior_hotmart_invoice": "Emitir NF para Hotmart no caso de cliente extrangeiro",
-
   "companies": "Empresas",
   "companies.list": "Empresas",
   "companies.add": "Nova Empresa",
@@ -542,12 +489,10 @@
   "companies.address": "Endereço",
   "companies.contacts": "Contatos",
   "companies.bank": "Dados Bancários",
-
   "contacts.name": "Nome",
   "contacts.email": "Email",
   "contacts.phone": "Telefone Comercial",
   "contacts.whatsapp": "Telefone/Whatsapp",
-
   "address.postal_code": "CEP",
   "address.street": "Rua/Avenida",
   "address.number": "Número",
@@ -556,21 +501,18 @@
   "address.city": "Cidade",
   "address.state": "Estado",
   "address.country": "País",
-
   "receivable": "Conta a Receber",
   "receivables": "Contas a Receber",
   "receivables.list": "Contas a Receber",
   "receivables.import": "Importar Contas a Receber",
   "receivables.add": "Nova Conta a Receber",
   "receivables.generalInfo": "Dados Gerais",
-
   "payable": "Conta a Pagar",
   "payables": "Contas a Pagar",
   "payables.list": "Contas a Pagar",
   "payables.import": "Importar Contas a Pagar",
   "payables.add": "Nova Conta a Pagar",
   "payables.generalInfo": "Dados Gerais",
-
   "transactions.client": "Cliente",
   "transactions.supplier": "Fornecedor",
   "transactions.status": "Status",
@@ -606,10 +548,8 @@
   "transactions.reconciled": "Conciliado",
   "transactions.file_type": "Tipo de Arquivo",
   "transactions.external_id": "ID Externo da Transação",
-
   "categories.name": "Nome",
   "categories.chart_accounts": "Código do Plano de Contas",
-
   "reconciliation_rules": "Regras de Conciliação",
   "reconciliation_rules.bank_accounts": "Contas Bancárias",
   "reconciliation_rules.name": "Nome",
@@ -627,8 +567,6 @@
   "button.create.reconciliation_rule": "Criar Regra de Conciliação",
   "button.edit.reconciliation_rule": "Editar Regra de Conciliação",
   "button.list.reconciliation_rule": "Listar Regras de Conciliação",
-
-
   "transfers": "Transferências",
   "transfers.index": "Transferências",
   "transfers.list": "Transferências",
@@ -638,7 +576,6 @@
   "transfers.description": "Descrição",
   "transfers.transfer_value": "Valor",
   "button.import.transfer": "Importar Transferências",
-
   "sale": "Venda",
   "sales": "Vendas",
   "sales.list": "Vendas",
@@ -651,7 +588,6 @@
   "sales.sync.text.guru.eduzz": "Sincronizar vendas do Guru/Eduzz",
   "sales.sync.text.provi": "Sincronizar vendas da Provi",
   "sales.sync.text.eduzz": "Sincronizar vendas da Eduzz",
-
   "sales.sync.hotmart": "Sincronizar com Hotmart",
   "sales.sync.provi": "Sincronizar com Provi",
   "sales.sync.eduzz": "Sincronizar com Eduzz",
@@ -666,17 +602,13 @@
   "sync.gurueduzz.text": "Resultado da Sincronização Hotmart Guru/Eduzz",
   "sync.provi.text": "Resultado da Sincronização Provi",
   "sync.eduzz.text": "Resultado da Sincronização Eduzz",
-  
-
   "sales.payment_type": "Tipo de Pagamento",
   "sales.payment_method": "Método de Pagamento",
-
   "invoices": "NFs",
   "invoices.download": "Baixar NFs",
   "invoices.pdf": "Gerar PDFs",
   "invoices.xml": "Gerar XMLs",
   "invoices.sheet": "Gerar Planilha",
-
   "sales.client_id": "Cliente",
   "sales.custom_sale_id": "ID da Venda",
   "sales.payment_plataform_id": "Plataforma",
@@ -718,7 +650,9 @@
   "sales.installments.competency_date": "Data Competência",
   "sales.installments.transaction_value": "Valor",
   "sales.second": "Emitir Segunda Via",
-
+  "stock": "Estoque",
+  "stock.list": "Estoque",
+  "button.list.stock": "Estoque",
   "purchases": "Compras",
   "purchases.list": "Compras",
   "purchases.approve": "Aprovar Compra",
@@ -729,7 +663,6 @@
   "purchases.sync.hotmart": "Sincronizar com Hotmart",
   "purchases.payment_type": "Tipo de Pagamento",
   "purchases.payment_method": "Método de Pagamento",
-
   "purchases.supplier": "Fornecedor",
   "purchases.supplier_id": "Fornecedor",
   "purchases.purchase_value": "Total",
@@ -757,14 +690,12 @@
   "purchases.status.approved": "Aprovada",
   "purchases.status.reproved": "Reprovada",
   "purchases.status.canceled": "Cancelada",
-
   "iuli_plans": "Planos Iuli",
   "iuli_plans.list": "Planos Iuli",
   "iuli_plans.add": "Novo Plano Iuli",
   "iuli_plans.name": "Nome",
   "iuli_plans.months_credit": "Tempo de Liberação (Meses)",
   "iuli_plans.invoices_per_month": "Notas Fiscais por mês",
-
   "iuli_payments": "Pagamentos Iuli",
   "iuli_payments.list": "Pagamentos Iuli",
   "iuli_payments.add": "Novo Pagamento Iuli",
@@ -772,10 +703,8 @@
   "iuli_payments.months_credit": "Meses Crédito",
   "iuli_payments.competency_date": "Data Venda",
   "iuli_payments.company_id": "Empresa",
-
   "period_closure": "Encerramento de Períodos",
   "period_closure.list": "Encerramento de Períodos",
-  
   "user": "Usuário",
   "users": "Usuários",
   "userName": "Nome",
@@ -787,8 +716,6 @@
   "user.password": "Senha",
   "user.password_confirmation": "Confirmar Senha",
   "user.acceptTerms": "Aceito os termos e condições",
-
-  
   "permission_user.role": "Permissões do Usuário",
   "permission_user": "Permissão por Usuário",
   "permission_user.name": "Nome",
@@ -798,16 +725,12 @@
   "button.create.permission_user": "Adicionar Permissão",
   "button.list.permission_user": "Listar permissões por usuário",
   "button.edit.permission_user": "edit Permissão",
-  
-
   "page_404.title": "Página não encontrada!",
   "page_404.text": "Ops! Não encontramos a página que você está buscando",
   "page_404.button.title": "Voltar para Início",
-
   "status.active": "Ativo",
   "status.deactivated": "Inativo",
   "status.blocked": "Bloqueado",
-
   "goToLogin": "Ir para Login",
   "goBack": "Voltar",
   "backToLogin": "Voltar para Login",
@@ -816,14 +739,11 @@
   "login.title": "Login",
   "login.text": "Bem-vindo ao IULI. Faça o login para acessar sua conta",
   "forgotPassword": "Esqueceu a senha?",
-
   "register.title": "Criar Conta",
   "register.message": "Informe os dados para criar uma nova conta",
-
   "recoverPassword": "Recuperar Senha",
   "recoverPassword.title": "Recuperar Senha",
   "recoverPassword.message": "Por favor informe seu email. Nós enviaremos para você as instruções de como resetar sua senha",
-
   "errors.required": "Este campo é obrigatório",
   "errors.required.enotas": "Este campo é obrigatório para habilitar emissão de Notas Fiscais",
   "errors.required.asaas": "Este campo é obrigatório para habilitar Links de Pagamentos",
@@ -854,11 +774,9 @@
     "title": "Houston, temos um problema!",
     "message": "A página que você está procurando está temporariamente indisponível"
   },
-
   "datatable.noData": "Nenhum registro encontrado",
   "datatable.noData.projects": "Nenhum projeto encontrado",
   "datatable.noData.cost_centers": "Nenhum centro de custo encontrado",
   "datatable.noData.conditions": "Nenhuma condição encontrada",
-
   "ultimo": "último"
 }

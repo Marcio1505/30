@@ -74,6 +74,7 @@ const BasicListTable = ({
   order,
   setOrder,
   initialized,
+  customMenu,
 }) => {
   const gridApi = useRef();
   const gridColumnApi = useRef();
@@ -104,6 +105,13 @@ const BasicListTable = ({
       permissionReport = 'payables.report';
       break;
     case 'SALE':
+      permissionDeleteGroup = 'sales.destroy';
+      permissionUpdateGroup = 'api.companies.sales.update-group';
+      permissionExport = 'exportar_planilha_vendas';
+      permissionImport = 'api.companies.sales.import';
+      permissionReport = 'sales.report';
+      break;
+    case 'STOCK':
       permissionDeleteGroup = 'sales.destroy';
       permissionUpdateGroup = 'api.companies.sales.update-group';
       permissionExport = 'exportar_planilha_vendas';
@@ -233,6 +241,7 @@ const BasicListTable = ({
               </UncontrolledDropdown>
             </div>
             <div className="filter-actions d-flex">
+              {customMenu}
               {hasFilters && (
                 <Button
                   onClick={toggleShowModalFilter}
@@ -480,6 +489,7 @@ BasicListTable.propTypes = {
   order: PropTypes.object,
   setOrder: PropTypes.func,
   initialized: PropTypes.bool,
+  customMenu: PropTypes.element,
 };
 
 BasicListTable.defaultProps = {
@@ -518,6 +528,7 @@ BasicListTable.defaultProps = {
   order: '',
   setOrder: () => null,
   initialized: false,
+  customMenu: null,
 };
 
 export default BasicListTable;

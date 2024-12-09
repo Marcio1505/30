@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import { Check, Clock, Plus, X } from 'react-feather';
-
+import { Check, Clock, DollarSign } from 'react-feather';
 import StatisticsCard from '../@vuexy/statisticsCard/StatisticsCard';
-
 import '../../assets/scss/plugins/tables/_agGridStyleOverride.scss';
 import '../../assets/scss/pages/users.scss';
 
@@ -16,10 +14,10 @@ const StockSummary = ({ summaryData }) => (
           solid
           hideChart
           iconBg="#FFF"
-          className="mb-0 bg-success text-left"
-          icon={<Check className="success" size={22} />}
-          stat={summaryData.issued?.text_value}
-          statTitle={`NF Emitida ${summaryData.issued?.text_number}`}
+          className="mb-0 bg-warning text-left"
+          icon={<Check className="warning" size={22} />}
+          stat="06 Produtos"
+          statTitle="Ativos"
           options={3}
           type="area"
         />
@@ -29,10 +27,10 @@ const StockSummary = ({ summaryData }) => (
           solid
           hideChart
           iconBg="#FFF"
-          className="mb-0 bg-warning text-left"
-          icon={<Clock className="warning" size={22} />}
+          className="mb-0 bg-success text-left"
+          icon={<DollarSign className="success" size={22} />}
           stat={summaryData.pending?.text_value}
-          statTitle={`NF a Emitir ${summaryData.pending?.text_number}`}
+          statTitle="Saldo em Estoque"
           options={3}
           type="area"
         />
@@ -43,9 +41,9 @@ const StockSummary = ({ summaryData }) => (
           hideChart
           iconBg="#FFF"
           className="mb-0 bg-danger text-left"
-          icon={<X className="danger" size={22} />}
-          stat={summaryData.error?.text_value}
-          statTitle={`NF Erro ${summaryData.error?.text_number}`}
+          icon={<Clock className="danger" size={22} />}
+          stat="02 Produtos"
+          statTitle="A Vender nos Próximos 30 dias"
           options={3}
           type="area"
         />
