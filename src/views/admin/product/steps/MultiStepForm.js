@@ -38,19 +38,19 @@ export const MultiStepForm = () => {
   return (
     <>
       <ButtonGroup>
-        <Button color="primary" outline>
+        <Button color="primary" outline={!isFirstStep}>
           Cadastro Básico
         </Button>
-        <Button color="primary" outline>
+        <Button color="primary" outline={currentStep !== 1}>
           Tributos
         </Button>
-        <Button color="primary" outline>
+        <Button color="primary" outline={currentStep !== 2}>
           Valores de Compra
         </Button>
-        <Button color="primary" outline>
+        <Button color="primary" outline={currentStep !== 3}>
           E-commerce
         </Button>
-        <Button color="primary" outline>
+        <Button color="primary" outline={currentStep !== 4}>
           Fornecedores
         </Button>
       </ButtonGroup>
@@ -66,15 +66,10 @@ export const MultiStepForm = () => {
               Etapa {currentStep + 1} de {steps.length}
             </h4>
             {steps[currentStep]}
-            {/* Mensagens de erro globais */}
-            Apenas para teste
             <div className="mt-3">
-              {Object.keys(errors).length > 0 &&
-                Object.keys(errors).map((key) => (
-                  <p key={key} className="text-danger">
-                    {errors[key]}
-                  </p>
-                ))}
+              {Object.keys(errors).length > 0 && (
+                <p className="text-danger">Campos com * são obrigatorios</p>
+              )}
             </div>
             {/* Navegação entre etapas */}
             <div className="d-flex justify-content-between mt-4">

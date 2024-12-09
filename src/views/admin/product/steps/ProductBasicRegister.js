@@ -5,6 +5,115 @@ import Switch from 'react-switch';
 
 export const ProductBasicRegister = () => (
   <>
+    <Row
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        marginTop: '18px',
+        marginBottom: '15px',
+      }}
+    >
+      <Col sm="3">
+        <Label
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginBottom: '10px',
+            fontSize: '1.2em',
+            fontWeight: 'bold',
+          }}
+        >
+          <Field name="ativarDesativar">
+            {({ field, form }) => (
+              <Switch
+                {...field}
+                checked={field.value}
+                onChange={(checked) => form.setFieldValue(field.name, checked)}
+                uncheckedIcon={false}
+                checkedIcon={false}
+                onColor="#36BBA4" // Cor primária quando selecionado
+              />
+            )}
+          </Field>
+          Ativar/Desativar
+        </Label>
+      </Col>
+      <Col sm="3">
+        <Label
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginBottom: '10px',
+            fontSize: '1.2em',
+            fontWeight: 'bold',
+          }}
+        >
+          <Field name="contabilizarEstoque">
+            {({ field, form }) => (
+              <Switch
+                {...field}
+                checked={field.value}
+                onChange={(checked) => form.setFieldValue(field.name, checked)}
+                uncheckedIcon={false}
+                checkedIcon={false}
+                onColor="#36BBA4" // Cor primária quando selecionado
+              />
+            )}
+          </Field>
+          Contabilizar Estoque
+        </Label>
+      </Col>
+      <Col sm="3">
+        <Label
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginBottom: '10px',
+            fontSize: '1.2em',
+            fontWeight: 'bold',
+          }}
+        >
+          <Field name="indisponivelVenda">
+            {({ field, form }) => (
+              <Switch
+                {...field}
+                checked={field.value}
+                onChange={(checked) => form.setFieldValue(field.name, checked)}
+                uncheckedIcon={false}
+                checkedIcon={false}
+                onColor="#36BBA4" // Cor primária quando selecionado
+              />
+            )}
+          </Field>
+          Indisponível para Venda
+        </Label>
+      </Col>
+      <Col sm="3">
+        <Label
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginBottom: '10px',
+            fontSize: '1.2em',
+            fontWeight: 'bold',
+          }}
+        >
+          <Field name="vendaSites">
+            {({ field, form }) => (
+              <Switch
+                {...field}
+                checked={field.value}
+                onChange={(checked) => form.setFieldValue(field.name, checked)}
+                uncheckedIcon={false}
+                checkedIcon={false}
+                onColor="#36BBA4" // Cor primária quando selecionado
+              />
+            )}
+          </Field>
+          Venda em Sites
+        </Label>
+      </Col>
+    </Row>
     <Row>
       <Col sm="6">
         <FormGroup>
@@ -15,7 +124,7 @@ export const ProductBasicRegister = () => (
             className="form-control"
             placeholder="Nome do produto"
           />
-          <ErrorMessage name="nome" />
+          <ErrorMessage name="nome" component="div" className="text-danger" />
         </FormGroup>
       </Col>
       <Col sm="6">
@@ -104,7 +213,7 @@ export const ProductBasicRegister = () => (
           <option value="tipo1">Tipo 1</option>
           <option value="tipo2">Tipo 2</option>
         </Field>
-        <ErrorMessage name="tipo" />
+        <ErrorMessage name="tipo" component="div" className="text-danger" />
       </Col>
       <Col sm="6">
         <Label for="grupo">Grupo</Label>
@@ -113,76 +222,6 @@ export const ProductBasicRegister = () => (
           <option value="grupo1">Grupo 1</option>
           <option value="grupo2">Grupo 2</option>
         </Field>
-      </Col>
-    </Row>
-    <Row
-      style={{
-        marginTop: '10px',
-      }}
-    >
-      <Col sm="3">
-        <Label>
-          <Field name="ativarDesativar">
-            {({ field, form }) => (
-              <Switch
-                {...field} // Passa o field para o switch
-                checked={field.value} // Usa o valor atual
-                onChange={(checked) => form.setFieldValue(field.name, checked)} // Atualiza o valor
-                uncheckedIcon={false} // Remove o ícone de quando está desativado
-                checkedIcon={false} // Remove o ícone de quando está ativado
-              />
-            )}
-          </Field>
-          Ativar/Desativar
-        </Label>
-      </Col>
-      <Col sm="3">
-        <Label>
-          <Field name="contabilizarEstoque">
-            {({ field, form }) => (
-              <Switch
-                {...field} // Passa o field para o switch
-                checked={field.value} // Usa o valor atual
-                onChange={(checked) => form.setFieldValue(field.name, checked)} // Atualiza o valor
-                uncheckedIcon={false} // Remove o ícone de quando está desativado
-                checkedIcon={false} // Remove o ícone de quando está ativado
-              />
-            )}
-          </Field>
-          Contabilizar Estoque
-        </Label>
-      </Col>
-      <Col sm="3">
-        <Label>
-          <Field name="indisponivelVenda">
-            {({ field, form }) => (
-              <Switch
-                {...field} // Passa o field para o switch
-                checked={field.value} // Usa o valor atual
-                onChange={(checked) => form.setFieldValue(field.name, checked)} // Atualiza o valor
-                uncheckedIcon={false} // Remove o ícone de quando está desativado
-                checkedIcon={false} // Remove o ícone de quando está ativado
-              />
-            )}
-          </Field>
-          Indisponível para Venda
-        </Label>
-      </Col>
-      <Col sm="3">
-        <Label>
-          <Field name="vendaSites">
-            {({ field, form }) => (
-              <Switch
-                {...field} // Passa o field para o switch
-                checked={field.value} // Usa o valor atual
-                onChange={(checked) => form.setFieldValue(field.name, checked)} // Atualiza o valor
-                uncheckedIcon={false} // Remove o ícone de quando está desativado
-                checkedIcon={false} // Remove o ícone de quando está ativado
-              />
-            )}
-          </Field>
-          Venda em Sites
-        </Label>
       </Col>
     </Row>
   </>

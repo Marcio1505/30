@@ -14,7 +14,11 @@ export const ProductTributosRegister = () => (
             id="codigoFiscal"
             className="form-control"
           />
-          <ErrorMessage name="codigoFiscal" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="codigoFiscal"
+            component="div"
+          />
         </FormGroup>
       </Col>
       <Col md={6}>
@@ -26,7 +30,7 @@ export const ProductTributosRegister = () => (
             id="origem"
             className="form-control"
           />
-          <ErrorMessage name="origem" component="div" />
+          <ErrorMessage className="text-danger" name="origem" component="div" />
         </FormGroup>
       </Col>
     </Row>
@@ -35,7 +39,7 @@ export const ProductTributosRegister = () => (
         <FormGroup>
           <Label for="NCM">NCM * </Label>
           <Field type="text" name="NCM" id="NCM" className="form-control" />
-          <ErrorMessage name="NCM" component="div" />
+          <ErrorMessage className="text-danger" name="NCM" component="div" />
         </FormGroup>
       </Col>
       <Col md={6}>
@@ -47,7 +51,11 @@ export const ProductTributosRegister = () => (
             id="unidadeMedida"
             className="form-control"
           />
-          <ErrorMessage name="unidadeMedida" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="unidadeMedida"
+            component="div"
+          />
         </FormGroup>
       </Col>
     </Row>
@@ -61,7 +69,11 @@ export const ProductTributosRegister = () => (
             id="ICMSCST"
             className="form-control"
           />
-          <ErrorMessage name="ICMSCST" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="ICMSCST"
+            component="div"
+          />
         </FormGroup>
       </Col>
       <Col md={6}>
@@ -73,7 +85,11 @@ export const ProductTributosRegister = () => (
             id="ICMSAliquota"
             className="form-control"
           />
-          <ErrorMessage name="ICMSAliquota" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="ICMSAliquota"
+            component="div"
+          />
         </FormGroup>
       </Col>
     </Row>
@@ -87,7 +103,11 @@ export const ProductTributosRegister = () => (
             id="PISCIST"
             className="form-control"
           />
-          <ErrorMessage name="PISCIST" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="PISCIST"
+            component="div"
+          />
         </FormGroup>
       </Col>
       <Col md={6}>
@@ -99,7 +119,11 @@ export const ProductTributosRegister = () => (
             id="PISAliquota"
             className="form-control"
           />
-          <ErrorMessage name="PISAliquota" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="PISAliquota"
+            component="div"
+          />
         </FormGroup>
       </Col>
     </Row>
@@ -113,7 +137,11 @@ export const ProductTributosRegister = () => (
             id="COFINSCST"
             className="form-control"
           />
-          <ErrorMessage name="COFINSCST" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="COFINSCST"
+            component="div"
+          />
         </FormGroup>
       </Col>
       <Col md={6}>
@@ -125,7 +153,11 @@ export const ProductTributosRegister = () => (
             id="COFINSAliquota"
             className="form-control"
           />
-          <ErrorMessage name="COFINSAliquota" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="COFINSAliquota"
+            component="div"
+          />
         </FormGroup>
       </Col>
     </Row>
@@ -139,7 +171,11 @@ export const ProductTributosRegister = () => (
             id="IPICIST"
             className="form-control"
           />
-          <ErrorMessage name="IPICIST" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="IPICIST"
+            component="div"
+          />
         </FormGroup>
       </Col>
       <Col md={6}>
@@ -151,7 +187,11 @@ export const ProductTributosRegister = () => (
             id="IPIAliquota"
             className="form-control"
           />
-          <ErrorMessage name="IPIAliquota" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="IPIAliquota"
+            component="div"
+          />
         </FormGroup>
       </Col>
     </Row>
@@ -167,14 +207,18 @@ export const ProductTributosRegister = () => (
             id="PIPCodigoEnquadramento"
             className="form-control"
           />
-          <ErrorMessage name="PIPCodigoEnquadramento" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="PIPCodigoEnquadramento"
+            component="div"
+          />
         </FormGroup>
       </Col>
       <Col md={6}>
         <FormGroup>
           <Label for="fonte">Fonte</Label>
           <Field type="text" name="fonte" id="fonte" className="form-control" />
-          <ErrorMessage name="fonte" component="div" />
+          <ErrorMessage className="text-danger" name="fonte" component="div" />
         </FormGroup>
       </Col>
     </Row>
@@ -190,7 +234,11 @@ export const ProductTributosRegister = () => (
             id="porcentagemTributoSimplificado"
             className="form-control"
           />
-          <ErrorMessage name="porcentagemTributoSimplificado" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="porcentagemTributoSimplificado"
+            component="div"
+          />
         </FormGroup>
       </Col>
     </Row>
@@ -204,7 +252,11 @@ export const ProductTributosRegister = () => (
             id="CFOPVendaEstado"
             className="form-control"
           />
-          <ErrorMessage name="CFOPVendaEstado" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="CFOPVendaEstado"
+            component="div"
+          />
         </FormGroup>
       </Col>
       <Col md={6}>
@@ -216,7 +268,11 @@ export const ProductTributosRegister = () => (
             id="CFOPDevolucaoEstado"
             className="form-control"
           />
-          <ErrorMessage name="CFOPDevolucaoEstado" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="CFOPDevolucaoEstado"
+            component="div"
+          />
         </FormGroup>
       </Col>
     </Row>
@@ -230,7 +286,11 @@ export const ProductTributosRegister = () => (
             id="CFOPVendaForaEstado"
             className="form-control"
           />
-          <ErrorMessage name="CFOPVendaForaEstado" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="CFOPVendaForaEstado"
+            component="div"
+          />
         </FormGroup>
       </Col>
       <Col md={6}>
@@ -244,7 +304,11 @@ export const ProductTributosRegister = () => (
             id="CFOPDevolucaoForaEstado"
             className="form-control"
           />
-          <ErrorMessage name="CFOPDevolucaoForaEstado" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="CFOPDevolucaoForaEstado"
+            component="div"
+          />
         </FormGroup>
       </Col>
     </Row>
@@ -258,7 +322,11 @@ export const ProductTributosRegister = () => (
             id="CFOPVendaExterior"
             className="form-control"
           />
-          <ErrorMessage name="CFOPVendaExterior" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="CFOPVendaExterior"
+            component="div"
+          />
         </FormGroup>
       </Col>
       <Col md={6}>
@@ -270,7 +338,11 @@ export const ProductTributosRegister = () => (
             id="CFOPDevolucaoExterior"
             className="form-control"
           />
-          <ErrorMessage name="CFOPDevolucaoExterior" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="CFOPDevolucaoExterior"
+            component="div"
+          />
         </FormGroup>
       </Col>
     </Row>
@@ -284,7 +356,11 @@ export const ProductTributosRegister = () => (
             id="beneficioFiscal"
             className="form-control"
           />
-          <ErrorMessage name="beneficioFiscal" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="beneficioFiscal"
+            component="div"
+          />
         </FormGroup>
       </Col>
       <Col md={6}>
@@ -296,7 +372,11 @@ export const ProductTributosRegister = () => (
             id="informacoesAdicional"
             className="form-control"
           />
-          <ErrorMessage name="informacoesAdicional" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="informacoesAdicional"
+            component="div"
+          />
         </FormGroup>
       </Col>
     </Row>
@@ -310,7 +390,11 @@ export const ProductTributosRegister = () => (
             id="descricao"
             className="form-control"
           />
-          <ErrorMessage name="descricao" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="descricao"
+            component="div"
+          />
         </FormGroup>
       </Col>
       <Col md={6}>
@@ -326,7 +410,11 @@ export const ProductTributosRegister = () => (
             <option value="unidade1">Unidade 1</option>
             <option value="unidade2">Unidade 2</option>
           </Field>
-          <ErrorMessage name="unidadeCompra" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="unidadeCompra"
+            component="div"
+          />
         </FormGroup>
       </Col>
     </Row>
@@ -344,7 +432,11 @@ export const ProductTributosRegister = () => (
             <option value="unidade1">Unidade 1</option>
             <option value="unidade2">Unidade 2</option>
           </Field>
-          <ErrorMessage name="unidadeVenda" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="unidadeVenda"
+            component="div"
+          />
         </FormGroup>
       </Col>
       <Col md={6}>
@@ -356,7 +448,11 @@ export const ProductTributosRegister = () => (
             id="fatorConversao"
             className="form-control"
           />
-          <ErrorMessage name="fatorConversao" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="fatorConversao"
+            component="div"
+          />
         </FormGroup>
       </Col>
     </Row>
@@ -370,7 +466,11 @@ export const ProductTributosRegister = () => (
             id="substituicaoTributaria"
             className="form-control"
           />
-          <ErrorMessage name="substituicaoTributaria" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="substituicaoTributaria"
+            component="div"
+          />
         </FormGroup>
       </Col>
       <Col md={6}>
@@ -387,7 +487,11 @@ export const ProductTributosRegister = () => (
             <option value="B">B</option>
             <option value="C">C</option>
           </Field>
-          <ErrorMessage name="curvaABC" component="div" />
+          <ErrorMessage
+            className="text-danger"
+            name="curvaABC"
+            component="div"
+          />
         </FormGroup>
       </Col>
     </Row>
