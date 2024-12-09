@@ -234,6 +234,7 @@ const resendConfirmationEmail = lazy(() =>
   import('./views/admin/authentication/ResendConfirmationEmail')
 );
 
+const stock = lazy(() => import('./views/admin/stock/list/StockList'));
 // Set Layout and Component Using App Route
 const AppRoute = (
   { component: Component, fullLayout, isPublic, ...rest },
@@ -752,6 +753,10 @@ const AppRouter = () => (
         <CompatRoute
           path="/admin/iuli-payment/edit/:iuli_payment_id"
           component={() => <AppRoute component={IuliPaymentEdit} />}
+        />
+        <CompatRoute
+          path="/stock"
+          component={() => <AppRoute component={stock} />}
         />
       </Switch>
     </CompatRouter>

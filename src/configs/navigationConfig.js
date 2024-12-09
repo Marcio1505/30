@@ -206,6 +206,13 @@ const navigationConfig = [
     permissioniuli: 'bank-accounts.period-closures.index',
   },
   {
+    id: 'stock',
+    title: 'Estoque',
+    type: 'item',
+    icon: <Icon.Package size={20} />,
+    permissions: ['admin'],
+  },
+  {
     id: 'dashboard',
     title: 'Settings',
     type: 'collapse',
