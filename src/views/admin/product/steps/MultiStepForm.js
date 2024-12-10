@@ -67,7 +67,7 @@ export const MultiStepForm = () => {
             </h4>
             {steps[currentStep]}
             <div className="mt-3">
-              {Object.keys(errors).length > 0 && (
+              {Object.keys(errors).length > 0 && currentStep !== 2 && (
                 <p className="text-danger">Campos com * são obrigatorios</p>
               )}
             </div>
