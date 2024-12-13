@@ -53,59 +53,33 @@ export const validationSchemas = [
     curvaABC: Yup.string(),
   }),
   Yup.object().shape({
-    purchaseCost: Yup.number().required('Custo de Compra é obrigatório'),
-    discount: Yup.number().required('Desconto é obrigatório'),
-    addition: Yup.number().required('Acrescimo é obrigatório'),
-    ipi: Yup.number().required('IPI é obrigatório'),
-    freight: Yup.number().required('Frete é obrigatório'),
-    additionalExpenses: Yup.number().required(
-      'Despesas Acessórias são obrigatórias'
-    ),
-    taxSubstitution: Yup.number().required(
-      'Substituição tributária é obrigatória'
-    ),
-    taxDifference: Yup.number().required(
-      'Diferencial de Alíquota é obrigatório'
-    ),
-    icmsStDifal: Yup.number().required('ICMS-ST Difal é obrigatório'),
-    averageCost: Yup.number().required('Custo Médio é obrigatório'),
-    totalCost: Yup.number().required(
-      'Custo Total Produto/Serviço é obrigatório'
-    ),
-    commission: Yup.number().required('Comissão é obrigatória'),
-    weight: Yup.number().required('Peso é obrigatório'),
-    barcode: Yup.string().required('Código de Barras é obrigatório'),
+    purchaseCost: Yup.number(),
+    discount: Yup.number(),
+    addition: Yup.number(),
+    ipi: Yup.number(),
+    freight: Yup.number(),
+    additionalExpenses: Yup.number(),
+    taxSubstitution: Yup.number(),
+    taxDifference: Yup.number(),
+    icmsStDifal: Yup.number(),
+    averageCost: Yup.number(),
+    totalCost: Yup.number(),
+    commission: Yup.number(),
+    weight: Yup.number(),
+    barcode: Yup.string(),
   }),
   Yup.object().shape({
-    minStock: Yup.number()
-      .required('Quantidade Mínima Estoque é obrigatória')
-      .min(0, 'Quantidade Mínima Estoque deve ser maior ou igual a 0'),
-    maxStock: Yup.number()
-      .required('Quantidade Máxima Estoque é obrigatória')
-      .min(0, 'Quantidade Máxima Estoque deve ser maior ou igual a 0'),
-    netWeight: Yup.number()
-      .required('Peso Líquido é obrigatório')
-      .min(0, 'Peso Líquido deve ser maior ou igual a 0'),
-    grossWeight: Yup.number()
-      .required('Peso Bruto é obrigatório')
-      .min(0, 'Peso Bruto deve ser maior ou igual a 0'),
-    height: Yup.number()
-      .required('Altura é obrigatória')
-      .min(0, 'Altura deve ser maior ou igual a 0'),
-    width: Yup.number()
-      .required('Largura é obrigatória')
-      .min(0, 'Largura deve ser maior ou igual a 0'),
-    length: Yup.number()
-      .required('Comprimento é obrigatório')
-      .min(0, 'Comprimento deve ser maior ou igual a 0'),
-    stockLocation: Yup.string().required('Local de estoque é obrigatório'),
-    registrationDate: Yup.date().required('Data do Cadastro é obrigatória'),
-    lastUpdateDate: Yup.date().required(
-      'Data da Última atualização é obrigatória'
-    ),
-    lastUpdateUser: Yup.string().required(
-      'Usuário da última Atualização é obrigatório'
-    ),
+    minStock: Yup.number(),
+    maxStock: Yup.number(),
+    netWeight: Yup.number(),
+    grossWeight: Yup.number(),
+    height: Yup.number(),
+    width: Yup.number(),
+    length: Yup.number(),
+    stockLocation: Yup.string(),
+    registrationDate: Yup.date(),
+    lastUpdateDate: Yup.date(),
+    lastUpdateUser: Yup.string(),
     productComposition: Yup.boolean(),
     products: Yup.array().of(
       Yup.object().shape({

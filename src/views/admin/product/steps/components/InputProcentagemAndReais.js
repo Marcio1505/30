@@ -10,9 +10,9 @@ export const InputProcentagemAndReais = ({ label, name }) => {
     // Permitir números e vírgulas
     const formattedValue = value.replace(/[^0-9,]/g, '');
     if (type === '%') {
-      return `${formattedValue}%`;
+      return `${formattedValue}`;
     }
-    return `R$${formattedValue}`;
+    return `${formattedValue}`;
   };
 
   const toggleFreightType = () => {
