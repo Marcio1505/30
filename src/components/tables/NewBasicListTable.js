@@ -74,7 +74,7 @@ const BasicListTable = ({
   order,
   setOrder,
   initialized,
-  customMenu,
+  exportButton,
   hasSearch,
 }) => {
   const gridApi = useRef();
@@ -242,7 +242,18 @@ const BasicListTable = ({
               </UncontrolledDropdown>
             </div>
             <div className="filter-actions d-flex">
-              {customMenu}
+              {exportButton && (
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    const selectedRows = gridApi.current.getSelectedRows();
+                    handleExportXLS(selectedRows);
+                  }}
+                >
+                  Exportar Excel
+                </Button>
+              )}
+
               {hasFilters && (
                 <Button
                   onClick={toggleShowModalFilter}
@@ -493,7 +504,7 @@ BasicListTable.propTypes = {
   order: PropTypes.object,
   setOrder: PropTypes.func,
   initialized: PropTypes.bool,
-  customMenu: PropTypes.element,
+  exportButton: PropTypes.bool,
   hasSearch: PropTypes.bool,
 };
 
@@ -533,7 +544,7 @@ BasicListTable.defaultProps = {
   order: '',
   setOrder: () => null,
   initialized: false,
-  customMenu: null,
+  exportButton: false,
   hasSearch: true,
 };
 

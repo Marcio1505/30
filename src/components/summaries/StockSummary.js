@@ -6,7 +6,7 @@ import StatisticsCard from '../@vuexy/statisticsCard/StatisticsCard';
 import '../../assets/scss/plugins/tables/_agGridStyleOverride.scss';
 import '../../assets/scss/pages/users.scss';
 
-const StockSummary = ({ summaryData }) => (
+const StockSummary = ({ summaryData: { active, expire, balance } }) => (
   <>
     <Row className="my-2 sales-summary">
       <Col lg="4" md="6" sm="12">
@@ -16,7 +16,7 @@ const StockSummary = ({ summaryData }) => (
           iconBg="#FFF"
           className="mb-0 bg-warning text-left"
           icon={<Check className="warning" size={22} />}
-          stat="06 Produtos"
+          stat={`${active} Produtos`}
           statTitle="Ativos"
           options={3}
           type="area"
@@ -29,7 +29,7 @@ const StockSummary = ({ summaryData }) => (
           iconBg="#FFF"
           className="mb-0 bg-success text-left"
           icon={<DollarSign className="success" size={22} />}
-          stat={summaryData.pending?.text_value}
+          stat={balance}
           statTitle="Saldo em Estoque"
           options={3}
           type="area"
@@ -42,7 +42,7 @@ const StockSummary = ({ summaryData }) => (
           iconBg="#FFF"
           className="mb-0 bg-danger text-left"
           icon={<Clock className="danger" size={22} />}
-          stat="02 Produtos"
+          stat={`${expire} Produtos`}
           statTitle="A Vender nos Próximos 30 dias"
           options={3}
           type="area"
@@ -53,7 +53,11 @@ const StockSummary = ({ summaryData }) => (
 );
 
 StockSummary.propTypes = {
-  summaryData: PropTypes.object.isRequired,
+  summaryData: PropTypes.shape({
+    active: PropTypes.string.isRequired,
+    expire: PropTypes.string.isRequired,
+    balance: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 StockSummary.defaultProps = {};

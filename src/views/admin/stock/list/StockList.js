@@ -9,17 +9,12 @@ import { addArrayParams } from '../../../../utils/queryPramsUtils';
 import Breadcrumbs from '../../../../components/@vuexy/breadCrumbs/BreadCrumb';
 import NewBasicListTable from '../../../../components/tables/NewBasicListTable';
 import StockSummary from '../../../../components/summaries/StockSummary';
-import {
-  fetchSalesList,
-  destroySale,
-} from '../../../../services/apis/sale.api';
+import { fetchSalesList } from '../../../../services/apis/sale.api';
 import { fetchBankAccountsList } from '../../../../services/apis/bank_account.api';
 import { fetchCostCentersList } from '../../../../services/apis/cost_center.api';
 import { fetchProjectsList } from '../../../../services/apis/project.api';
 import { fetchProductsList } from '../../../../services/apis/product.api';
 import { fetchCategoriesList } from '../../../../services/apis/category.api';
-import { createGroupInvoice } from '../../../../services/apis/invoice.api';
-import { history } from '../../../../history';
 import { store } from '../../../../redux/storeConfig/store';
 import { applicationActions } from '../../../../new.redux/actions';
 import { setFilters } from '../../../../new.redux/sales/sales.actions';
@@ -28,9 +23,7 @@ import '../../../../assets/scss/plugins/forms/flatpickr/flatpickr.scss';
 import '../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss';
 import '../../../../assets/scss/pages/users.scss';
 import { columnDefs } from './TableConfig';
-import { formatMoney } from '../../../../utils/formaters';
-import { exportSalesXLS } from '../../../../utils/sales/exporters';
-
+import { exportStockXLS } from './exportStockXLS';
 import PermissionGate from '../../../../PermissionGate';
 
 const StockList = ({ companies, filter, setFilters }) => {
@@ -45,7 +38,6 @@ const StockList = ({ companies, filter, setFilters }) => {
 
   const [costCenters, setCostCenters] = useState([]);
   const [projects, setProjects] = useState([]);
-  const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [summary, setSummary] = useState({});
 
@@ -60,75 +52,17 @@ const StockList = ({ companies, filter, setFilters }) => {
   const [salesToEdit, setSalesToEdit] = useState([]);
   const [showModalFilterSale, setShowModalFilterSale] = useState(false);
 
-  const [showModalHandleDestroyGroupSale, setshowModalHandleDestroyGroupSale] =
-    useState(false);
-
   const handleSummaryData = (gridApi) => {
-    let totalSales = summary.total_invoices?.count;
-    let totalValue = summary.total_invoices?.total_value;
+    const totalValueBalance = gridApi?.total_sales || 0;
 
-    let issuedSales = summary.authorized_invoices?.count;
-    let issuedValue = summary.authorized_invoices?.total_value;
+    const amountItensActive = gridApi?.total_sales || 0;
 
-    let pendingSales = summary.pending_invoices?.count;
-    let pendingValue = summary.pending_invoices?.total_value;
-
-    let errorSales = summary.failed_invoices?.count;
-    let errorValue = summary.failed_invoices?.total_value;
-
-    const selectedSales = gridApi?.current.getSelectedRows();
-    if (selectedSales?.length) {
-      totalSales = selectedSales.length;
-      totalValue = selectedSales.reduce(
-        (accumulator, { total_value }) => accumulator + parseFloat(total_value),
-        0
-      );
-
-      const filteredIssuedSales = selectedSales.filter(
-        ({ nfe_status }) => nfe_status === 2
-      );
-      issuedSales = filteredIssuedSales.length;
-      issuedValue = filteredIssuedSales.reduce(
-        (accumulator, { total_value }) => accumulator + parseFloat(total_value),
-        0
-      );
-
-      const filteredPendingSales = selectedSales.filter(
-        ({ nfe_status }) => nfe_status !== 2 && nfe_status !== 9
-      );
-      pendingSales = filteredPendingSales.length;
-      pendingValue = filteredPendingSales.reduce(
-        (accumulator, { total_value }) => accumulator + parseFloat(total_value),
-        0
-      );
-    }
+    const amountItensExpire = gridApi?.total_sales || 0;
 
     setSummaryData({
-      ...summaryData,
-      error: {
-        number: errorSales,
-        value: errorValue,
-        text_number: `(${errorSales})`,
-        text_value: formatMoney(errorValue || 0),
-      },
-      pending: {
-        number: pendingSales,
-        value: pendingValue,
-        text_number: `(${pendingSales})`,
-        text_value: formatMoney(pendingValue || 0),
-      },
-      issued: {
-        number: issuedSales,
-        value: issuedValue,
-        text_number: `(${issuedSales})`,
-        text_value: formatMoney(issuedValue || 0),
-      },
-      total: {
-        number: totalSales,
-        value: totalValue,
-        text_number: `(${totalSales})`,
-        text_value: formatMoney(totalValue || 0),
-      },
+      active: amountItensActive,
+      expire: amountItensExpire,
+      balance: totalValueBalance,
     });
   };
 
@@ -151,220 +85,8 @@ const StockList = ({ companies, filter, setFilters }) => {
     setSalesToEdit(sales);
   };
 
-  const handleExportSalesXLS = (sales) => {
-    if (isEmpty(sales)) {
-      store.dispatch(
-        applicationActions.toggleDialog({
-          type: 'warning',
-          title: 'Nenhuma venda selecionada',
-          message: `Selecione pelo menos uma venda para solicitar exportação XLSX`,
-          confirmBtnText: 'Ok',
-          onConfirm: () => {
-            store.dispatch(applicationActions.hideDialog());
-          },
-        })
-      );
-      return;
-    }
-
-    exportSalesXLS(sales);
-  };
-
-  const handleStoreGroupInvoice = async (sales) => {
-    if (isEmpty(sales)) {
-      store.dispatch(
-        applicationActions.toggleDialog({
-          type: 'warning',
-          title: 'Nenhuma venda selecionada',
-          message: `Selecione pelo menos uma venda para solicitar emissão de Notas Fiscais.`,
-          confirmBtnText: 'Ok',
-          onConfirm: () => {
-            store.dispatch(applicationActions.hideDialog());
-          },
-        })
-      );
-      return;
-    }
-    const error = [];
-    let hasCanceledOrRefunded = false;
-    sales.forEach((sale) => {
-      if ([9, 10, 11, 12, 13].includes(sale.status)) {
-        hasCanceledOrRefunded = true;
-      }
-      if (!sale.client_has_data_to_create_invoice) {
-        error.push({
-          id: sale.id,
-          type: 'client_has_data_to_create_invoice',
-        });
-      }
-      if (
-        sale.service_invoices.length > 0 ||
-        sale.product_invoices.length > 0
-      ) {
-        error.push({
-          id: sale.id,
-          type: 'sale_has_invoice',
-        });
-      } else if (sale.nfe_status) {
-        error.push({
-          id: sale.id,
-          type: 'sale_nfe_status',
-        });
-      }
-    });
-    if (error.length > 0) {
-      console.log({ error });
-    }
-
-    if (hasCanceledOrRefunded) {
-      store.dispatch(
-        applicationActions.toggleDialog({
-          type: 'warning',
-          title: 'Atenção',
-          message: `Na lista de Notas Fiscais selecionadas para emissão tem-se vendas com status Cancelado ou Reembolsado ou Chargeback.
-          Você pretende prosseguir com a emissão?
-          Se preferir você pode filtrar a lista de Vendas conforme o Status e prosseguir com a emissão de Notas Fiscais.`,
-          confirmBtnText: 'Continuar Emissão',
-          showCancel: true,
-          reverseButtons: false,
-          cancelBtnBsStyle: 'secondary',
-          confirmBtnBsStyle: 'danger',
-          cancelBtnText: 'Cancelar',
-          onConfirm: async () => {
-            const sales_ids = sales.map((sale) => sale.id);
-            store.dispatch(applicationActions.hideDialog());
-            await createGroupInvoice({ sales_ids });
-            await fetchData();
-          },
-        })
-      );
-      return;
-    }
-  };
-
-  const handleDeleteSale = (sale) => {
-    const { id } = sale;
-
-    const hasReconciled = sale.transactions.some(
-      (transaction) =>
-        transaction.reconciled == 1 || transaction.reconciled == 2
-    );
-
-    if (hasReconciled) {
-      store.dispatch(
-        applicationActions.toggleDialog({
-          type: 'warning',
-          title:
-            'Essa venda possui pelo menos uma transação de contas a pagar/receber que está conciliada',
-          message:
-            'Só é permitido excluir vendas que não possuam transações conciliadas',
-          confirmBtnText: 'Ok',
-          onConfirm: () => {
-            store.dispatch(applicationActions.hideDialog());
-          },
-        })
-      );
-      return;
-    }
-
-    store.dispatch(
-      applicationActions.toggleDialog({
-        type: 'warning',
-        title: 'Atenção',
-        message:
-          'Ao deletar esta venda, todas as contas a pagar e contas a receber associadas a ela serão também excluídas. Esta ação é irreversível',
-        showCancel: true,
-        reverseButtons: false,
-        cancelBtnBsStyle: 'secondary',
-        confirmBtnBsStyle: 'danger',
-        confirmBtnText: 'Confirmar',
-        cancelBtnText: 'Cancelar',
-        onConfirm: async () => {
-          store.dispatch(applicationActions.hideDialog());
-          await destroySale({ id });
-          await fetchData();
-        },
-      })
-    );
-  };
-
-  const handleDestroyGroupSale = async (sales, user) => {
-    if (isEmpty(sales)) {
-      store.dispatch(
-        applicationActions.toggleDialog({
-          type: 'warning',
-          title: 'Nenhuma venda selecionada',
-          message: 'Selecione pelo menos uma venda para apagar em grupo',
-          confirmBtnText: 'Ok',
-          onConfirm: () => {
-            store.dispatch(applicationActions.hideDialog());
-          },
-        })
-      );
-      return;
-    }
-
-    const hasReconciled = sales.some((sale) =>
-      sale.transactions.some(
-        (transaction) =>
-          transaction.reconciled == 1 || transaction.reconciled == 2
-      )
-    );
-
-    if (hasReconciled) {
-      store.dispatch(
-        applicationActions.toggleDialog({
-          type: 'warning',
-          title:
-            'Foi selecionado pelo menos uma venda que possui transação conciliada',
-          message:
-            'Selecione apenas vendas que não possuam transações conciliadas para apagar em grupo',
-          confirmBtnText: 'Ok',
-          onConfirm: () => {
-            store.dispatch(applicationActions.hideDialog());
-          },
-        })
-      );
-      return;
-    }
-
-    const hasSync = sales.some(
-      (sale) =>
-        sale.source === 'HOTMART' ||
-        sale.source === 'ASAAS' ||
-        sale.source === 'GURUPAGARME' ||
-        sale.source === 'GURU2PAGARME2' ||
-        sale.source === 'GURUEDUZZ' ||
-        sale.source === 'PROVI' ||
-        sale.source === 'EDUZZ' ||
-        sale.source === 'TICTO' ||
-        sale.source === 'KIWIFY' ||
-        sale.source === 'HUBLA' ||
-        sale.source === 'DOMINIO' ||
-        sale.source === 'TMB'
-    );
-
-    if (hasSync && !loggedUInUser.is_iuli_admin) {
-      store.dispatch(
-        applicationActions.toggleDialog({
-          type: 'warning',
-          title:
-            'Foi selecionado pelo menos uma venda que foi criada por sincronização automática',
-          message:
-            'Selecione apenas vendas que não foram criadas por sincronização automática',
-          confirmBtnText: 'Ok',
-          onConfirm: () => {
-            store.dispatch(applicationActions.hideDialog());
-          },
-        })
-      );
-      return;
-    }
-
-    // verificar se tem nota fiscal e não deixar prosseguir
-
-    setshowModalHandleDestroyGroupSale(true);
-    setSalesToEdit(sales);
+  const handleExportStockXLS = (sales) => {
+    exportStockXLS(sales);
   };
 
   const getSales = debounce(async ({ searchBy: _searchBy } = {}) => {
@@ -428,7 +150,10 @@ const StockList = ({ companies, filter, setFilters }) => {
     const respBankAccountList = await fetchBankAccountsList();
     const dataBankAccounts = respBankAccountList.data || [];
   };
-
+  const getProducts = async () => {
+    const respProducts = await fetchProductsList();
+    const dataProducts = respProducts.data || [];
+  };
   const getProjects = async () => {
     const respProjects = await fetchProjectsList();
     const dataProjects = respProjects.data || [];
@@ -437,18 +162,6 @@ const StockList = ({ companies, filter, setFilters }) => {
         ...project,
         label: project.name,
         value: project.id,
-      }))
-    );
-  };
-
-  const getProducts = async () => {
-    const respProducts = await fetchProductsList();
-    const dataProducts = respProducts.data || [];
-    setProducts(
-      dataProducts.map((product) => ({
-        ...product,
-        label: product.name,
-        value: product.id,
       }))
     );
   };
@@ -525,7 +238,8 @@ const StockList = ({ companies, filter, setFilters }) => {
             <CardBody>
               <NewBasicListTable
                 hasSearch={false}
-                customMenu={<Button color="primary">Exportar Excel</Button>}
+                exportButton
+                handleExportXLS={handleExportStockXLS}
                 sortModel={[
                   {
                     colId: 'competency_date',
@@ -535,9 +249,7 @@ const StockList = ({ companies, filter, setFilters }) => {
                 filter={filter}
                 setFilters={setFilters}
                 handleSummaryData={handleSummaryData}
-                handleStoreGroupInvoice={handleStoreGroupInvoice}
                 handleEditGroup={handleEditGroupSale}
-                handleExportXLS={handleExportSalesXLS}
                 toggleShowModalFilter={() =>
                   setShowModalFilterSale(!showModalFilterSale)
                 }
@@ -553,7 +265,6 @@ const StockList = ({ companies, filter, setFilters }) => {
                 dataPerPage={dataPerPage}
                 setDataPerPage={setDataPerPage}
                 initialized={initialized}
-                handleDestroyGroup={handleDestroyGroupSale}
                 dataType="STOCK"
               />
             </CardBody>

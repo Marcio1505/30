@@ -28,9 +28,12 @@ export const ProductBasicRegister = () => (
               <Switch
                 {...field}
                 checked={field.value}
+                height={20}
+                width={40}
                 onChange={(checked) => form.setFieldValue(field.name, checked)}
                 uncheckedIcon={false}
                 checkedIcon={false}
+                style={{ transform: [{ scaleX: 0.5 }, { scaleY: 0.8 }] }}
                 onColor="#36BBA4" // Cor primária quando selecionado
               />
             )}
@@ -53,6 +56,8 @@ export const ProductBasicRegister = () => (
               <Switch
                 {...field}
                 checked={field.value}
+                height={20}
+                width={40}
                 onChange={(checked) => form.setFieldValue(field.name, checked)}
                 uncheckedIcon={false}
                 checkedIcon={false}
@@ -78,6 +83,8 @@ export const ProductBasicRegister = () => (
               <Switch
                 {...field}
                 checked={field.value}
+                height={20}
+                width={40}
                 onChange={(checked) => form.setFieldValue(field.name, checked)}
                 uncheckedIcon={false}
                 checkedIcon={false}
@@ -103,6 +110,8 @@ export const ProductBasicRegister = () => (
               <Switch
                 {...field}
                 checked={field.value}
+                height={20}
+                width={40}
                 onChange={(checked) => form.setFieldValue(field.name, checked)}
                 uncheckedIcon={false}
                 checkedIcon={false}

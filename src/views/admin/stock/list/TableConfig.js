@@ -33,7 +33,6 @@ export const columnDefs = [
     field: 'average_price',
     cellRendererFramework: (params) =>
       formatMoney(params.data.average_price, true) || '-',
-    width: 120,
   },
   {
     headerName: 'CTP',
