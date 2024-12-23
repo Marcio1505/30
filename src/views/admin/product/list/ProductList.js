@@ -15,18 +15,14 @@ import {
   destroyProduct,
   fetchProductsList,
 } from '../../../../services/apis/product.api';
-
 import '../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss';
 import '../../../../assets/scss/pages/users.scss';
-
 import BasicListTable from '../../../../components/tables/BasicListTable';
-
 import { formatMoney } from '../../../../utils/formaters';
-
 import StatusBadge from '../../../../components/badges/StatusBadge';
 import ProductTypeBadge from '../../../../components/badges/ProductTypeBadge';
 import ProductPriceView from '../../../../components/badges/ProductPriceViewBadge';
-
+import ProdutsExpiration from '../modal/ModalProdutsExpiration';
 import PermissionGate from '../../../../PermissionGate';
 
 const ProductList = ({ currentCompanyId }) => {
@@ -152,6 +148,7 @@ const ProductList = ({ currentCompanyId }) => {
 
   return (
     <PermissionGate permissions="companies.products.index">
+      <ProdutsExpiration currentCompanyId={currentCompanyId} />
       <Row className="app-user-list">
         <Col md="8" sm="12">
           <Breadcrumbs

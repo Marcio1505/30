@@ -1,177 +1,93 @@
 import React from 'react';
-import { Field, ErrorMessage } from 'formik';
-import { Row, Col, FormGroup, Label } from 'reactstrap';
-import Switch from 'react-switch';
+import { Field } from 'formik';
+import { Row, Col, FormGroup, Label, Card, CardImg } from 'reactstrap';
+import {
+  TextFieldController,
+  SwitchController,
+  SelectController,
+} from '../../../../components/inputs/controlled';
+
+const productTypes = [
+  {
+    value: 1,
+    label: 'Produto',
+  },
+  {
+    value: 2,
+    label: 'Serviço',
+  },
+  {
+    value: 3,
+    label: 'Split (Produto e Serviço)',
+  },
+];
 
 export const ProductBasicRegister = () => (
-  <>
-    <Row
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: '18px',
-        marginBottom: '15px',
-      }}
-    >
-      <Col sm="3">
-        <Label
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: '10px',
-            fontSize: '1.2em',
-            fontWeight: 'bold',
-          }}
-        >
-          <Field name="ativarDesativar">
-            {({ field, form }) => (
-              <Switch
-                {...field}
-                checked={field.value}
-                height={20}
-                width={40}
-                onChange={(checked) => form.setFieldValue(field.name, checked)}
-                uncheckedIcon={false}
-                checkedIcon={false}
-                style={{ transform: [{ scaleX: 0.5 }, { scaleY: 0.8 }] }}
-                onColor="#36BBA4" // Cor primária quando selecionado
-              />
-            )}
-          </Field>
-          Ativar/Desativar
-        </Label>
-      </Col>
-      <Col sm="3">
-        <Label
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: '10px',
-            fontSize: '1.2em',
-            fontWeight: 'bold',
-          }}
-        >
-          <Field name="contabilizarEstoque">
-            {({ field, form }) => (
-              <Switch
-                {...field}
-                checked={field.value}
-                height={20}
-                width={40}
-                onChange={(checked) => form.setFieldValue(field.name, checked)}
-                uncheckedIcon={false}
-                checkedIcon={false}
-                onColor="#36BBA4" // Cor primária quando selecionado
-              />
-            )}
-          </Field>
-          Contabilizar Estoque
-        </Label>
-      </Col>
-      <Col sm="3">
-        <Label
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: '10px',
-            fontSize: '1.2em',
-            fontWeight: 'bold',
-          }}
-        >
-          <Field name="indisponivelVenda">
-            {({ field, form }) => (
-              <Switch
-                {...field}
-                checked={field.value}
-                height={20}
-                width={40}
-                onChange={(checked) => form.setFieldValue(field.name, checked)}
-                uncheckedIcon={false}
-                checkedIcon={false}
-                onColor="#36BBA4" // Cor primária quando selecionado
-              />
-            )}
-          </Field>
-          Indisponível para Venda
-        </Label>
-      </Col>
-      <Col sm="3">
-        <Label
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: '10px',
-            fontSize: '1.2em',
-            fontWeight: 'bold',
-          }}
-        >
-          <Field name="vendaSites">
-            {({ field, form }) => (
-              <Switch
-                {...field}
-                checked={field.value}
-                height={20}
-                width={40}
-                onChange={(checked) => form.setFieldValue(field.name, checked)}
-                uncheckedIcon={false}
-                checkedIcon={false}
-                onColor="#36BBA4" // Cor primária quando selecionado
-              />
-            )}
-          </Field>
-          Venda em Sites
-        </Label>
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="6">
-        <FormGroup>
-          <Label for="nome">Nome *</Label>
-          <Field
-            id="nome"
-            name="nome"
-            className="form-control"
-            placeholder="Nome do produto"
-          />
-          <ErrorMessage name="nome" component="div" className="text-danger" />
-        </FormGroup>
-      </Col>
-      <Col sm="6">
-        <Label for="codigoProduto">Código do Produto</Label>
-        <Field
-          id="codigoProduto"
-          name="codigoProduto"
-          className="form-control"
-          placeholder="Código do produto"
-        />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="6">
-        <Label for="referencia">Referência</Label>
-        <Field
-          id="referencia"
-          name="referencia"
-          className="form-control"
-          placeholder="Referência"
-        />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="6">
-        <Label for="fornecedor">Fornecedor</Label>
+  <Row
+    style={{
+      display: 'flex',
+      alignItems: 'start',
+      marginTop: '18px',
+      marginBottom: '15px',
+    }}
+  >
+    <Col sm="3">
+      <SwitchController name="ativarDesativar" label="Ativar/Desativar" />
+
+      <TextFieldController
+        id="name"
+        name="name"
+        label="Nome *"
+        placeholder="Nome do produto"
+      />
+
+      <FormGroup>
+        <Label for="supplier">Fornecedor</Label>
         <Field
           as="select"
-          id="fornecedor"
-          name="fornecedor"
+          id="supplier"
+          name="supplier"
           className="form-control"
         >
           <option value="">Selecione o fornecedor</option>
           <option value="fornecedor1">Fornecedor 1</option>
           <option value="fornecedor2">Fornecedor 2</option>
         </Field>
-      </Col>
-      <Col sm="6">
+      </FormGroup>
+
+      <FormGroup>
+        <SelectController
+          id="opcoesVenda"
+          name="opcoesVenda"
+          label="Opções de Venda *"
+          options={[
+            { value: 1, label: 'markup' },
+            { value: 2, label: 'preço de venda' },
+          ]}
+        />
+      </FormGroup>
+      <TextFieldController
+        id="group"
+        name="group"
+        label="Grupo"
+        placeholder=""
+      />
+    </Col>
+
+    <Col sm="3">
+      <SwitchController
+        name="contabilizarEstoque"
+        label="Contabilizar Estoque"
+      />
+
+      <TextFieldController
+        id="code"
+        name="code"
+        label="Código do Produto"
+        placeholder="Código do produto"
+      />
+
+      <FormGroup>
         <Label for="vencimentoProduto">Vencimento do Produto</Label>
         <Field
           id="vencimentoProduto"
@@ -179,10 +95,33 @@ export const ProductBasicRegister = () => (
           type="date"
           className="form-control"
         />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="6">
+      </FormGroup>
+
+      <TextFieldController
+        id="description"
+        name="description"
+        label="Descrição"
+        placeholder="Descrição do produto"
+      />
+      <SwitchController name="vendaSites" label="Venda em Sites" />
+    </Col>
+    <Col sm="3">
+      <SwitchController
+        name="indisponivelVenda"
+        label="Indisponível para Venda"
+      />
+
+      <FormGroup>
+        <Label for="referencia">Referência</Label>
+        <Field
+          id="referencia"
+          name="referencia"
+          className="form-control"
+          placeholder="Referência"
+        />
+      </FormGroup>
+
+      <FormGroup>
         <Label for="precoVenda">Preço de Venda</Label>
         <Field
           id="precoVenda"
@@ -191,47 +130,31 @@ export const ProductBasicRegister = () => (
           className="form-control"
           placeholder="Preço de venda"
         />
-      </Col>
-      <Col sm="6">
-        <Label for="opcoesVenda">Opções de Venda</Label>
-        <Field
-          id="opcoesVenda"
-          name="opcoesVenda"
-          className="form-control"
-          placeholder="Opções de venda"
+      </FormGroup>
+      <SelectController
+        id="product_type"
+        name="product_type"
+        label="Tipo *"
+        options={productTypes}
+      />
+    </Col>
+    <Col sm="3">
+      <Card
+        className="my-2"
+        outline
+        style={{
+          width: '14',
+          height: 'auto',
+          borderRadius: '10px',
+          border: '1px solid #c8c8c8',
+        }}
+      >
+        <CardImg
+          alt="Card image cap"
+          src="https://picsum.photos/900/1200?grayscale"
+          width="85%"
         />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="12">
-        <Label for="descricao">Descrição</Label>
-        <Field
-          id="descricao"
-          name="descricao"
-          as="textarea"
-          className="form-control"
-          placeholder="Descrição do produto"
-        />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="6">
-        <Label for="tipo">Tipo *</Label>
-        <Field as="select" id="tipo" name="tipo" className="form-control">
-          <option value="">Selecione o tipo</option>
-          <option value="tipo1">Tipo 1</option>
-          <option value="tipo2">Tipo 2</option>
-        </Field>
-        <ErrorMessage name="tipo" component="div" className="text-danger" />
-      </Col>
-      <Col sm="6">
-        <Label for="grupo">Grupo</Label>
-        <Field as="select" id="grupo" name="grupo" className="form-control">
-          <option value="">Selecione o grupo</option>
-          <option value="grupo1">Grupo 1</option>
-          <option value="grupo2">Grupo 2</option>
-        </Field>
-      </Col>
-    </Row>
-  </>
+      </Card>
+    </Col>
+  </Row>
 );

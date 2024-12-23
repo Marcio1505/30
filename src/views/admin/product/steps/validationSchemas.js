@@ -2,8 +2,8 @@ import * as Yup from 'yup';
 
 export const validationSchemas = [
   Yup.object().shape({
-    nome: Yup.string().required('Nome é obrigatório'),
-    codigoProduto: Yup.string(),
+    name: Yup.string().required('Nome é obrigatório'),
+    code: Yup.string(),
     referencia: Yup.string(),
     fornecedor: Yup.string(),
     vencimentoProduto: Yup.date().min(
@@ -12,9 +12,9 @@ export const validationSchemas = [
     ),
     precoVenda: Yup.number(),
     opcoesVenda: Yup.string(),
-    descricao: Yup.string(),
-    tipo: Yup.string().required('Tipo é obrigatório'),
-    grupo: Yup.string(),
+    description: Yup.string(),
+    product_type: Yup.string().required('Tipo é obrigatório'),
+    group: Yup.string(), // Changed 'grupo' to 'group'
   }),
   Yup.object().shape({
     codigoFiscal: Yup.string(),

@@ -1,12 +1,12 @@
 import React from 'react';
-import { Field } from 'formik';
+import { Field, ErrorMessage } from 'formik';
 import { Row, Col, FormGroup, Label } from 'reactstrap';
 import * as Yup from 'yup';
 import { InputProcentagemAndReais } from './components/InputProcentagemAndReais';
 
 export const ProductValueBuyRegister = () => (
   <Row>
-    <Col md="6">
+    <Col md="3">
       <FormGroup>
         <Label for="purchaseCost">Custo de Compra</Label>
         <Field name="purchaseCost" type="text" className="form-control" />
@@ -17,31 +17,31 @@ export const ProductValueBuyRegister = () => (
         /> */}
       </FormGroup>
     </Col>
-    <Col md="6">
+    <Col md="3">
       <InputProcentagemAndReais label="Desconto" name="discount" />
     </Col>
-    <Col md="6">
+    <Col md="3">
       <InputProcentagemAndReais label="Acrescimo" name="addition" />
     </Col>
-    <Col md="6">
+    <Col md="3">
       <InputProcentagemAndReais label="IPI" name="ipi" />
     </Col>
 
-    <Col md="6">
+    <Col md="3">
       <InputProcentagemAndReais label="Frete" name="freight" />
     </Col>
-    <Col md="6">
+    <Col md="3">
       <FormGroup>
         <Label for="additionalExpenses">Despesas Acessórias</Label>
         <Field name="additionalExpenses" type="text" className="form-control" />
-        {/* <ErrorMessage
+        <ErrorMessage
           name="additionalExpenses"
           component="div"
           className="text-danger"
-        /> */}
+        />
       </FormGroup>
     </Col>
-    <Col md="6">
+    <Col md="3">
       <FormGroup>
         <Label for="taxSubstitution">Substituição tributária</Label>
         <Field name="taxSubstitution" type="text" className="form-control" />
@@ -52,16 +52,16 @@ export const ProductValueBuyRegister = () => (
         /> */}
       </FormGroup>
     </Col>
-    <Col md="6">
+    <Col md="3">
       <InputProcentagemAndReais
         label="Diferencial de Alíquota"
         name="taxDifference"
       />
     </Col>
-    <Col md="6">
+    <Col md="3">
       <InputProcentagemAndReais label="ICMS-ST Difal" name="icmsStDifal" />
     </Col>
-    <Col md="6">
+    <Col md="3">
       <FormGroup>
         <Label for="averageCost">Custo Médio</Label>
         <Field name="averageCost" type="text" className="form-control" />
@@ -72,7 +72,7 @@ export const ProductValueBuyRegister = () => (
         /> */}
       </FormGroup>
     </Col>
-    <Col md="6">
+    <Col md="3">
       <FormGroup>
         <Label for="totalCost">Custo Total Produto/Serviço</Label>
         <Field name="totalCost" type="text" className="form-control" />
@@ -83,10 +83,10 @@ export const ProductValueBuyRegister = () => (
         /> */}
       </FormGroup>
     </Col>
-    <Col md="6">
+    <Col md="3">
       <InputProcentagemAndReais label="Comissão" name="commission" />
     </Col>
-    <Col md="6">
+    <Col md="3">
       <FormGroup>
         <Label for="weight">Peso</Label>
         <Field name="weight" type="text" className="form-control" />

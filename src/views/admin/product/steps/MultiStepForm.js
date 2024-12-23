@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
-import { Button, ButtonGroup } from 'reactstrap';
+import { Button, ButtonGroup, Card, CardBody } from 'reactstrap';
 import { ProductBasicRegister } from './ProductBasicRegister';
 import { validationSchemas } from './validationSchemas';
 import { ProductTributosRegister } from './ProductTributosRegister';
@@ -9,11 +9,11 @@ import { ProductECommerceRegister } from './ProductECommerceRegister';
 import { TableFornecedores } from './TableFornecedores';
 
 const steps = [
-  <ProductBasicRegister />,
-  <ProductTributosRegister />,
-  <ProductValueBuyRegister />,
-  <ProductECommerceRegister />,
-  <TableFornecedores />,
+  <ProductBasicRegister key="ProductBasicRegister" />,
+  <ProductTributosRegister key="ProductTributosRegister" />,
+  <ProductValueBuyRegister key="ProductValueBuyRegister" />,
+  <ProductECommerceRegister key="ProductECommerceRegister" />,
+  <TableFornecedores key="TableFornecedores" />,
 ];
 
 export const MultiStepForm = () => {
@@ -25,7 +25,7 @@ export const MultiStepForm = () => {
   const handleSubmit = (values, actions) => {
     if (isLastStep) {
       // Submissão final
-      console.log('Valores finais:', values);
+
       actions.setSubmitting(false);
     } else {
       // Avançar para o próximo passo
@@ -34,65 +34,84 @@ export const MultiStepForm = () => {
       actions.setSubmitting(false);
     }
   };
-  const InitialValuesDefault = {};
+
+  const InitialValuesDefault = {
+    tipo: '',
+    nome: '',
+  };
+
   return (
     <>
-      <ButtonGroup>
-        <Button color="primary" outline={!isFirstStep}>
+      <ButtonGroup style={{ borderRadius: 0 }}>
+        <Button
+          color={isFirstStep ? 'primary' : 'secondary'}
+          style={{ borderRadius: 0 }}
+          onClick={() => setCurrentStep(0)}
+        >
           Cadastro Básico
         </Button>
-        <Button color="primary" outline={currentStep !== 1}>
+        <Button
+          color={currentStep === 1 ? 'primary' : 'secondary'}
+          onClick={() => setCurrentStep(1)}
+        >
           Tributos
         </Button>
-        <Button color="primary" outline={currentStep !== 2}>
+        <Button
+          color={currentStep === 2 ? 'primary' : 'secondary'}
+          onClick={() => setCurrentStep(2)}
+        >
           Valores de Compra
         </Button>
-        <Button color="primary" outline={currentStep !== 3}>
+        <Button
+          color={currentStep === 3 ? 'primary' : 'secondary'}
+          onClick={() => setCurrentStep(3)}
+        >
           E-commerce
         </Button>
-        <Button color="primary" outline={currentStep !== 4}>
+        <Button
+          color={currentStep === 4 ? 'primary' : 'secondary'}
+          onClick={() => setCurrentStep(4)}
+          style={{ borderRadius: 0 }}
+        >
           Fornecedores
         </Button>
       </ButtonGroup>
 
-      <Formik
-        initialValues={{ ...InitialValuesDefault }}
-        validationSchema={validationSchemas[currentStep]}
-        onSubmit={handleSubmit}
-      >
-        {({ errors, isSubmitting }) => (
-          <Form>
-            <h4>
-              Etapa {currentStep + 1} de {steps.length}
-            </h4>
-            {steps[currentStep]}
-            <div className="mt-3">
-              {Object.keys(errors).length > 0 && currentStep !== 2 && (
-                <p className="text-danger">Campos com * são obrigatorios</p>
-              )}
-            </div>
-            {/* Navegação entre etapas */}
-            <div className="d-flex justify-content-between mt-4">
-              {!isFirstStep && (
-                <Button
-                  color="secondary"
-                  onClick={() => setCurrentStep(currentStep - 1)}
-                  disabled={isSubmitting}
-                >
-                  Voltar
-                </Button>
-              )}
-              <Button
-                type="submit"
-                color={isLastStep ? 'success' : 'primary'}
-                disabled={isSubmitting}
-              >
-                {isLastStep ? 'Enviar' : 'Próximo'}
-              </Button>
-            </div>
-          </Form>
-        )}
-      </Formik>
+      <Card>
+        <CardBody className="pt-2">
+          <Formik
+            initialValues={{ ...InitialValuesDefault }}
+            validationSchema={validationSchemas[currentStep]}
+            onSubmit={handleSubmit}
+          >
+            {({ isSubmitting }) => (
+              <Form>
+                {steps[currentStep]}
+
+                {/* Navegação entre etapas */}
+                <div className="d-flex justify-content-between mt-4">
+                  {!isFirstStep && (
+                    <Button
+                      color="secondary"
+                      onClick={() => setCurrentStep(currentStep - 1)}
+                      disabled={isSubmitting}
+                    >
+                      Voltar
+                    </Button>
+                  )}
+                  <Button
+                    type="submit"
+                    color={isLastStep ? 'success' : 'primary'}
+                    disabled={isSubmitting}
+                  >
+                    {isLastStep ? 'Enviar' : 'Próximo'}
+                  </Button>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </CardBody>
+      </Card>
     </>
   );
 };

@@ -6,29 +6,22 @@ export const InputProcentagemAndReais = ({ label, name }) => {
   const [freightType, setFreightType] = useState('%');
   const { setFieldValue, values } = useFormikContext();
 
-  const formatValue = (value, type) => {
+  const formatValue = (value) => {
     // Permitir números e vírgulas
-    const formattedValue = value.replace(/[^0-9,]/g, '');
-    if (type === '%') {
-      return `${formattedValue}`;
-    }
-    return `${formattedValue}`;
+    return value.replace(/[^0-9,]/g, '');
   };
 
-  const toggleFreightType = () => {
-    const currentValue = values[name];
-    const formattedValue = formatValue(
-      currentValue,
-      freightType === '%' ? 'R$' : '%'
-    );
+  const toggleFreightType = (type) => {
+    const currentValue = values[name] ?? '';
+    const formattedValue = currentValue.replace(/[^0-9,]/g, '');
     setFieldValue(name, formattedValue);
-    setFreightType((prevType) => (prevType === '%' ? 'R$' : '%'));
+    setFreightType(type);
   };
 
   return (
     <FormGroup>
       <Label for={name}>{label}</Label>
-      <div className="d-flex">
+      <div className="d-flex flex-row-reverse">
         <Field name={name}>
           {({ field, form }) => (
             <Input
@@ -40,23 +33,22 @@ export const InputProcentagemAndReais = ({ label, name }) => {
                   formatValue(e.target.value, freightType)
                 )
               } // Atualiza o valor
+              style={{ borderRadius: '0', padding: '0 0.8rem' }}
             />
           )}
         </Field>
 
         <Button
-          color="primary"
-          onClick={toggleFreightType}
-          className="ml-2"
-          disabled={freightType === '%'}
+          color={freightType === '%' ? 'primary' : 'secondary'}
+          onClick={() => toggleFreightType('%')}
+          style={{ borderRadius: '0', padding: '0 0.8rem' }}
         >
           R$
         </Button>
         <Button
-          color="primary"
-          onClick={toggleFreightType}
-          className="ml-2"
-          disabled={freightType === 'R$'}
+          color={freightType === 'R$' ? 'primary' : 'secondary'}
+          onClick={() => toggleFreightType('R$')}
+          style={{ borderRadius: '0', padding: '0 0.8rem' }}
         >
           %
         </Button>
