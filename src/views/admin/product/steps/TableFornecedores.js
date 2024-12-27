@@ -1,7 +1,7 @@
 import React from 'react';
-import { Table } from 'reactstrap';
 import BasicListTable from '../../../../components/tables/BasicListTable';
 
+// List of suppliers with the last purchase date desde a última compra
 const columns = [
   {
     headerName: 'Fornecedor',
@@ -12,6 +12,15 @@ const columns = [
     headerName: 'Data da última compra',
     field: 'dataUltimaCompra',
     key: 'dataUltimaCompra',
+    width: 300,
+    valueFormatter: (params) => {
+      const date = new Date(params.value);
+      return date.toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      });
+    },
   },
 ];
 
@@ -21,19 +30,6 @@ const rowData = [
   // Adicione mais dados conforme necessário
 ];
 export const TableFornecedores = () => {
-  const columns = [
-    {
-      title: 'Fornecedor',
-      dataIndex: 'nome',
-      key: 'nome',
-    },
-    {
-      title: 'Data da última compra',
-      dataIndex: 'dataUltimaCompra',
-      key: 'dataUltimaCompra',
-    },
-  ];
-
   return (
     <BasicListTable
       rowData={rowData}

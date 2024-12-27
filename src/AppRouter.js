@@ -235,6 +235,16 @@ const resendConfirmationEmail = lazy(() =>
 );
 
 const stock = lazy(() => import('./views/admin/stock/list/StockList'));
+
+const purchaseOrder = lazy(() =>
+  import('./views/admin/purchaseOrder/list/PurchaseOrderList')
+);
+
+const purchaseOrderEdit = lazy(() =>
+  import('./views/admin/purchaseOrder/edit/PurchaseOrderEdit.js')
+);
+
+const noteEntry = lazy(() => import('./views/admin/noteEntry/list/NoteEntry'));
 // Set Layout and Component Using App Route
 const AppRoute = (
   { component: Component, fullLayout, isPublic, ...rest },
@@ -389,13 +399,11 @@ const AppRouter = () => (
             <AppRoute component={resetPasswordIuli} fullLayout isPublic />
           )}
         />
-
         <Route
           exact
           path="/sales-dashboard"
           component={() => <AppRoute component={salesDashboard} />}
         />
-
         <Route
           exact
           path="/financial-dashboard"
@@ -413,7 +421,6 @@ const AppRouter = () => (
           path="/new-dashboard4"
           component={() => <AppRoute component={newDashboard4} />}
         /> */}
-
         <Route
           exact
           path="/"
@@ -623,7 +630,6 @@ const AppRouter = () => (
           path="/admin/bank-account/:bank_account_id/reconciliation"
           component={() => <AppRoute component={bankAccountReconciliation} />}
         />
-
         {/* PROJECTS */}
         <CompatRoute
           path="/admin/project/list"
@@ -676,7 +682,6 @@ const AppRouter = () => (
           path="/admin/product/edit/"
           component={() => <AppRoute component={ProductEdit} />}
         />
-
         {/* PRODUCT LINKS */}
         <CompatRoute
           path="/admin/product-link/list"
@@ -690,7 +695,6 @@ const AppRouter = () => (
           path="/admin/product-link/edit/"
           component={() => <AppRoute component={ProductLinkEdit} />}
         />
-
         {/* SALES */}
         <CompatRoute
           path="/admin/sale/list"
@@ -712,7 +716,6 @@ const AppRouter = () => (
           path="/admin/invoice/download"
           component={() => <AppRoute component={InvoiceDownload} />}
         />
-
         {/* PURCHASES */}
         <CompatRoute
           path="/admin/purchase/list"
@@ -730,7 +733,6 @@ const AppRouter = () => (
           path="/admin/period-closure/list"
           component={() => <AppRoute component={PeriodClosureList} />}
         />
-
         {/* IULI PLAN */}
         <CompatRoute
           path="/admin/iuli-plan/list"
@@ -744,7 +746,6 @@ const AppRouter = () => (
           path="/admin/iuli-plan/edit/"
           component={() => <AppRoute component={IuliPlanEdit} />}
         />
-
         {/* IULI PAYMENT */}
         <CompatRoute
           path="/admin/iuli-payment/list"
@@ -757,6 +758,18 @@ const AppRouter = () => (
         <CompatRoute
           path="/stock"
           component={() => <AppRoute component={stock} />}
+        />{' '}
+        <CompatRoute
+          path="/purchase-order/edit"
+          component={() => <AppRoute component={purchaseOrderEdit} />}
+        />
+        <CompatRoute
+          path="/purchase-order"
+          component={() => <AppRoute component={purchaseOrder} />}
+        />
+        <CompatRoute
+          path="/note-entry"
+          component={() => <AppRoute component={noteEntry} />}
         />
       </Switch>
     </CompatRouter>

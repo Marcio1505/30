@@ -36,8 +36,18 @@ export const MultiStepForm = () => {
   };
 
   const InitialValuesDefault = {
-    tipo: '',
-    nome: '',
+    product_type: '',
+    name: '',
+    supplier: [],
+    discount: 10,
+    products: [
+      {
+        id: '',
+        product: '',
+        quantity: '',
+        unit: '',
+      },
+    ],
   };
 
   return (
@@ -84,9 +94,20 @@ export const MultiStepForm = () => {
             validationSchema={validationSchemas[currentStep]}
             onSubmit={handleSubmit}
           >
-            {({ isSubmitting }) => (
+            {({ isSubmitting, errors }) => (
               <Form>
                 {steps[currentStep]}
+
+                {/* Display errors */}
+                {Object.keys(errors).length > 0 && (
+                  <div className="alert alert-danger mt-3">
+                    <ul>
+                      {Object.keys(errors).map((key) => (
+                        <li key={key}>{errors[key]}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 {/* Navegação entre etapas */}
                 <div className="d-flex justify-content-between mt-4">

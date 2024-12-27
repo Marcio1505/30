@@ -1,21 +1,18 @@
 import React from 'react';
-import { Field, ErrorMessage } from 'formik';
+import { Field } from 'formik';
 import { Row, Col, FormGroup, Label } from 'reactstrap';
 import * as Yup from 'yup';
-import { InputProcentagemAndReais } from './components/InputProcentagemAndReais';
+import InputProcentagemAndReais from './components/InputProcentagemAndReais';
+import { TextFieldController } from '../../../../components/inputs/controlled';
 
 export const ProductValueBuyRegister = () => (
   <Row>
     <Col md="3">
-      <FormGroup>
-        <Label for="purchaseCost">Custo de Compra</Label>
-        <Field name="purchaseCost" type="text" className="form-control" />
-        {/* <ErrorMessage
-          name="purchaseCost"
-          component="div"
-          className="text-danger"
-        /> */}
-      </FormGroup>
+      <TextFieldController
+        name="purchaseCost"
+        id="purchaseCost"
+        label="Custo de Compra"
+      />
     </Col>
     <Col md="3">
       <InputProcentagemAndReais label="Desconto" name="discount" />
@@ -31,15 +28,11 @@ export const ProductValueBuyRegister = () => (
       <InputProcentagemAndReais label="Frete" name="freight" />
     </Col>
     <Col md="3">
-      <FormGroup>
-        <Label for="additionalExpenses">Despesas Acessórias</Label>
-        <Field name="additionalExpenses" type="text" className="form-control" />
-        <ErrorMessage
-          name="additionalExpenses"
-          component="div"
-          className="text-danger"
-        />
-      </FormGroup>
+      <TextFieldController
+        name="additionalExpenses"
+        id="additionalExpenses"
+        label="Despesas Acessórias"
+      />
     </Col>
     <Col md="3">
       <FormGroup>

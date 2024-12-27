@@ -5,7 +5,16 @@ export const validationSchemas = [
     name: Yup.string().required('Nome é obrigatório'),
     code: Yup.string(),
     referencia: Yup.string(),
-    fornecedor: Yup.string(),
+    supplier: Yup.array().of(
+      Yup.object().shape({
+        id: Yup.number(),
+        company_name: Yup.string(),
+        trading_name: Yup.string(),
+        document: Yup.string(),
+        value: Yup.number(),
+        label: Yup.string(),
+      })
+    ),
     vencimentoProduto: Yup.date().min(
       new Date(),
       'A data de vencimento não pode ser no passado'
@@ -83,12 +92,12 @@ export const validationSchemas = [
     productComposition: Yup.boolean(),
     products: Yup.array().of(
       Yup.object().shape({
-        id: Yup.string().required('ID é obrigatório'),
-        product: Yup.string().required('Produto é obrigatório'),
+        id: Yup.string().nullable(),
+        product: Yup.string().nullable(),
         quantity: Yup.number()
-          .required('Quantidade é obrigatória')
-          .min(0, 'Quantidade deve ser maior ou igual a 0'),
-        unit: Yup.string().required('Unidade de Medida é obrigatória'),
+          .min(0, 'Quantidade deve ser maior ou igual a 0')
+          .nullable(),
+        unit: Yup.string().nullable(),
       })
     ),
   }),
