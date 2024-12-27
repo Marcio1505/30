@@ -16,7 +16,7 @@ import {
 
 import CompanyForm from '../../company/edit/CompanyForm';
 
-import PermissionGate from "../../../../PermissionGate";
+import PermissionGate from '../../../../PermissionGate';
 
 const SupplierEdit = ({ currentCompanyId }) => {
   const history = useHistory();
@@ -25,12 +25,9 @@ const SupplierEdit = ({ currentCompanyId }) => {
   const [initialized, setInitialized] = useState(false);
 
   let permissionForm = '';
-  if(company_id)
-  {
+  if (company_id) {
     permissionForm = 'suppliers.show';
-  }
-  else
-  {
+  } else {
     permissionForm = 'companies.suppliers.store';
   }
 
@@ -85,32 +82,32 @@ const SupplierEdit = ({ currentCompanyId }) => {
     <>
       {initialized && (
         <>
-        <PermissionGate permissions={permissionForm}>
-          <Row>
-            <Col sm="12">
-              <Breadcrumbs
-                breadCrumbTitle={
-                  company_id ? `${company.company_name}` : 'Novo fornecedor'
-                }
-                breadCrumbParents={[
-                  {
-                    name: 'Listar Fornecedores',
-                    link: '/admin/supplier/list',
-                  },
-                ]}
-                breadCrumbActive={
-                  company_id ? 'Editar Fornecedor' : 'Adicionar fornecedor'
-                }
-              />
-            </Col>
-          </Row>
-          <CompanyForm
-            companyType="supplier"
-            company={company}
-            companyId={company_id}
-            formSubmit={formSubmit}
-          />          
-        </PermissionGate>
+          <PermissionGate permissions={permissionForm}>
+            <Row>
+              <Col sm="12">
+                <Breadcrumbs
+                  breadCrumbTitle={
+                    company_id ? `${company.company_name}` : 'Novo fornecedor'
+                  }
+                  breadCrumbParents={[
+                    {
+                      name: 'Listar Fornecedores',
+                      link: '/admin/supplier/list',
+                    },
+                  ]}
+                  breadCrumbActive={
+                    company_id ? 'Editar Fornecedor' : 'Adicionar fornecedor'
+                  }
+                />
+              </Col>
+            </Row>
+            <CompanyForm
+              companyType="supplier"
+              company={company}
+              companyId={company_id}
+              formSubmit={formSubmit}
+            />
+          </PermissionGate>
         </>
       )}
     </>
