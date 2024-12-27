@@ -2,27 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, Label, FormFeedback } from 'reactstrap';
 import { Field, ErrorMessage } from 'formik';
+import InputMask from 'react-input-mask';
 
-const TextFieldController = ({
+const MaskFieldController = ({
   id,
   name,
   label,
   placeholder,
-  type,
-  disabled,
-  value,
+  mask = false,
 }) => (
   <FormGroup>
     <Label for={id}>{label}</Label>
-    <Field
-      type={type}
-      id={id}
-      name={name}
-      className="form-control"
-      placeholder={placeholder}
-      disabled={disabled}
-      value={value}
-    />
+
+    <InputMask mask={mask}>
+      {(inputProps) => (
+        <Field
+          id={id}
+          name={name}
+          type="text"
+          className="form-control"
+          placeholder={placeholder}
+          value={inputProps.value}
+          onChange={inputProps.onChange}
+          onBlur={inputProps.onBlur}
+        />
+      )}
+    </InputMask>
+
     <ErrorMessage
       name={name}
       component="div"
@@ -32,21 +38,16 @@ const TextFieldController = ({
   </FormGroup>
 );
 
-TextFieldController.propTypes = {
+MaskFieldController.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  type: PropTypes.string,
-  disabled: PropTypes.bool,
-  value: PropTypes.string,
+  mask: PropTypes.string.isRequired,
 };
 
-TextFieldController.defaultProps = {
+MaskFieldController.defaultProps = {
   placeholder: '',
-  type: 'text',
-  disabled: false,
-  value: null,
 };
 
-export default TextFieldController;
+export default MaskFieldController;

@@ -7,10 +7,9 @@ const SelectController = ({ id, name, label, options }) => (
   <FormGroup>
     <Label for={id}>{label}</Label>
     <Field as="select" id={id} name={name} className="form-control">
-      <option value="">Selecione o tipo</option>
       {options.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.label}
+        <option key={option?.value} value={option?.value}>
+          {option?.label}
         </option>
       ))}
     </Field>

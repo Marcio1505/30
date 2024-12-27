@@ -49,7 +49,7 @@ export const fetchSuppliersList = ({ apiOptions = {} } = {}) => {
   });
 };
 
-export const fetchSelectSuppliers = ({ apiOptions = {}, params } = {}) => {
+export const fetchSelectSuppliers = ({ apiOptions = {}, params = '' } = {}) => {
   const state = store.getState();
   return API(apiOptions)({
     url: `${suppliersEndpoints.selectSuppliers.url.replace(

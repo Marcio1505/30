@@ -1,156 +1,121 @@
-import React, { useState } from 'react';
-import { Field, ErrorMessage, FieldArray } from 'formik';
+import React, { useState, useEffect } from 'react';
+import { FieldArray } from 'formik';
 import { Row, Col, FormGroup, Label, Button, Card, CardImg } from 'reactstrap';
 import Toggle from 'react-toggle';
 import 'react-toggle/style.css';
+import {
+  TextFieldController,
+  SelectSearchController,
+} from '../../../../components/inputs/controlled';
+import { fetchProductsList } from '../../../../services/apis/product.api';
 
 export const ProductECommerceRegister = () => {
   const [isProductComposition, setIsProductComposition] = useState(false);
+  const [products, setProducts] = useState([{ id: '', label: '' }]);
+
+  const loadProducts = async () => {
+    const { data } = await fetchProductsList();
+    const formattedData = data.map((item) => ({
+      label: item.name,
+      id: item.id,
+    }));
+    setProducts(formattedData);
+  };
+
+  useEffect(() => {
+    loadProducts();
+  }, [isProductComposition]);
 
   return (
     <Col style={{ display: 'flex' }}>
       <Col>
         <Row form>
           <Col md={3}>
-            <FormGroup>
-              <Label for="minStock">Quantidade Mínima Estoque</Label>
-              <Field name="minStock" type="number" className="form-control" />
-              <ErrorMessage
-                name="minStock"
-                component="div"
-                className="text-danger"
-              />
-            </FormGroup>
+            <TextFieldController
+              label="Quantidade Mínima Estoque"
+              name="minStock"
+              type="number"
+              id="minStock"
+            />
           </Col>
           <Col md={3}>
-            <FormGroup>
-              <Label for="maxStock">Quantidade Máxima Estoque</Label>
-              <Field name="maxStock" type="number" className="form-control" />
-              <ErrorMessage
-                name="maxStock"
-                component="div"
-                className="text-danger"
-              />
-            </FormGroup>
+            <TextFieldController
+              label="Quantidade Máxima Estoque"
+              name="maxStock"
+              type="number"
+              id="maxStock"
+            />
           </Col>
           <Col md={3}>
-            <FormGroup>
-              <Label for="netWeight">Peso Líquido</Label>
-              <Field name="netWeight" type="number" className="form-control" />
-              <ErrorMessage
-                name="netWeight"
-                component="div"
-                className="text-danger"
-              />
-            </FormGroup>
+            <TextFieldController
+              label="Peso Líquido"
+              name="netWeight"
+              type="number"
+              id="netWeight"
+            />
           </Col>
           <Col md={3}>
-            <FormGroup>
-              <Label for="grossWeight">Peso Bruto</Label>
-              <Field
-                name="grossWeight"
-                type="number"
-                className="form-control"
-              />
-              <ErrorMessage
-                name="grossWeight"
-                component="div"
-                className="text-danger"
-              />
-            </FormGroup>
+            <TextFieldController
+              label="Peso Bruto"
+              name="grossWeight"
+              type="number"
+              id="grossWeight"
+            />
           </Col>
           <Col md={3}>
-            <FormGroup>
-              <Label for="height">Altura</Label>
-              <Field name="height" type="number" className="form-control" />
-              <ErrorMessage
-                name="height"
-                component="div"
-                className="text-danger"
-              />
-            </FormGroup>
+            <TextFieldController
+              label="Altura"
+              name="height"
+              type="number"
+              id="height"
+            />
           </Col>
           <Col md={3}>
-            <FormGroup>
-              <Label for="width">Largura</Label>
-              <Field name="width" type="number" className="form-control" />
-              <ErrorMessage
-                name="width"
-                component="div"
-                className="text-danger"
-              />
-            </FormGroup>
+            <TextFieldController
+              label="Largura"
+              name="width"
+              type="number"
+              id="width"
+            />
           </Col>
           <Col md={3}>
-            <FormGroup>
-              <Label for="length">Comprimento</Label>
-              <Field name="length" type="number" className="form-control" />
-              <ErrorMessage
-                name="length"
-                component="div"
-                className="text-danger"
-              />
-            </FormGroup>
+            <TextFieldController
+              label="Comprimento"
+              name="length"
+              type="number"
+              id="length"
+            />
           </Col>
           <Col md={3}>
-            <FormGroup>
-              <Label for="stockLocation">Local de estoque</Label>
-              <Field name="stockLocation" as="select" className="form-control">
-                <option value="">Selecione</option>
-                <option value="location1">Local 1</option>
-                <option value="location2">Local 2</option>
-              </Field>
-              <ErrorMessage
-                name="stockLocation"
-                component="div"
-                className="text-danger"
-              />
-            </FormGroup>
+            <TextFieldController
+              name="stockLocation"
+              id="stockLocation"
+              label="Local de estoque"
+            />
           </Col>
           <Col md={3}>
-            <FormGroup>
-              <Label for="registrationDate">Data do Cadastro</Label>
-              <Field
-                name="registrationDate"
-                type="date"
-                className="form-control"
-              />
-              <ErrorMessage
-                name="registrationDate"
-                component="div"
-                className="text-danger"
-              />
-            </FormGroup>
+            <TextFieldController
+              label="Data do Cadastro"
+              name="registrationDate"
+              type="date"
+              id="registrationDate"
+            />
           </Col>
           <Col md={3}>
-            <FormGroup>
-              <Label for="lastUpdateDate">Data da Última atualização</Label>
-              <Field
-                name="lastUpdateDate"
-                type="date"
-                className="form-control"
-              />
-              <ErrorMessage
-                name="lastUpdateDate"
-                component="div"
-                className="text-danger"
-              />
-            </FormGroup>
+            <TextFieldController
+              label="Data da Última atualização"
+              name="lastUpdateDate"
+              type="date"
+              id="lastUpdateDate"
+            />
           </Col>
           <Col md={3}>
-            <FormGroup>
-              <Label for="lastUpdateUser">Usuário da última Atualização</Label>
-              <Field
-                name="lastUpdateUser"
-                type="text"
-                className="form-control"
-              />
-              <ErrorMessage
-                name="lastUpdateUser"
-                component="div"
-                className="text-danger"
-              />
-            </FormGroup>
+            <TextFieldController
+              label="Usuário da última Atualização"
+              name="lastUpdateUser"
+              type="text"
+              id="lastUpdateUser"
+            />
           </Col>
         </Row>
 
@@ -186,78 +151,39 @@ export const ProductECommerceRegister = () => {
                       >
                         <Row form>
                           <Col md={3}>
-                            <FormGroup>
-                              <Label for={`products.${index}.id`}>ID</Label>
-                              <Field
-                                name={`products.${index}.id`}
-                                type="text"
-                                className="form-control"
-                              />
-                              <ErrorMessage
-                                name={`products.${index}.id`}
-                                component="div"
-                                className="text-danger"
-                              />
-                            </FormGroup>
+                            <TextFieldController
+                              label="ID"
+                              disabled
+                              name={`products.${index}.id`}
+                              type="text"
+                              id={`products.${index}.id`}
+                              value={product.product.id}
+                            />
                           </Col>
                           <Col md={3}>
-                            <FormGroup>
-                              <Label for={`products.${index}.product`}>
-                                Produto
-                              </Label>
-                              <Field
-                                name={`products.${index}.product`}
-                                as="select"
-                                className="form-control"
-                              >
-                                <option value="">Selecione</option>
-                                <option value="product1">Produto 1</option>
-                                <option value="product2">Produto 2</option>
-                              </Field>
-                              <ErrorMessage
-                                name={`products.${index}.product`}
-                                component="div"
-                                className="text-danger"
-                              />
-                            </FormGroup>
+                            <SelectSearchController
+                              label="Produto"
+                              name={`products.${index}.product`}
+                              id={`products.${index}.product`}
+                              isClearable
+                              isSearchable
+                              options={[...products]}
+                            />
                           </Col>
                           <Col md={3}>
-                            <FormGroup>
-                              <Label for={`products.${index}.quantity`}>
-                                Quantidade
-                              </Label>
-                              <Field
-                                name={`products.${index}.quantity`}
-                                type="number"
-                                className="form-control"
-                              />
-                              <ErrorMessage
-                                name={`products.${index}.quantity`}
-                                component="div"
-                                className="text-danger"
-                              />
-                            </FormGroup>
+                            <TextFieldController
+                              label="Quantidade"
+                              name={`products.${index}.quantity`}
+                              type="number"
+                              id={`products.${index}.quantity`}
+                            />
                           </Col>
                           <Col md={3}>
-                            <FormGroup>
-                              <Label for={`products.${index}.unit`}>
-                                Unidade de Medida
-                              </Label>
-                              <Field
-                                name={`products.${index}.unit`}
-                                as="select"
-                                className="form-control"
-                              >
-                                <option value="">Selecione</option>
-                                <option value="unit1">Unidade 1</option>
-                                <option value="unit2">Unidade 2</option>
-                              </Field>
-                              <ErrorMessage
-                                name={`products.${index}.unit`}
-                                component="div"
-                                className="text-danger"
-                              />
-                            </FormGroup>
+                            <TextFieldController
+                              label="Unidade de Medida"
+                              name={`products.${index}.unit`}
+                              id={`products.${index}.unit`}
+                            />
                           </Col>
                         </Row>
                         <Button
@@ -277,7 +203,7 @@ export const ProductECommerceRegister = () => {
                     color="primary"
                     onClick={() =>
                       arrayHelpers.push({
-                        id: '',
+                        id: null,
                         product: '',
                         quantity: '',
                         unit: '',
