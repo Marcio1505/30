@@ -93,22 +93,7 @@ export const ProductECommerceRegister = () => {
               label="Local de estoque"
             />
           </Col>
-          <Col md={3}>
-            <TextFieldController
-              label="Data do Cadastro"
-              name="registrationDate"
-              type="date"
-              id="registrationDate"
-            />
-          </Col>
-          <Col md={3}>
-            <TextFieldController
-              label="Data da Última atualização"
-              name="lastUpdateDate"
-              type="date"
-              id="lastUpdateDate"
-            />
-          </Col>
+
           <Col md={3}>
             <TextFieldController
               label="Usuário da última Atualização"

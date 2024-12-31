@@ -14,12 +14,16 @@ const productTypes = [
     label: 'Selecione o tipo',
   },
   {
-    value: 1,
-    label: 'Unidade',
+    value: 'PRODUCT',
+    label: 'Produto',
   },
   {
-    value: 2,
-    label: 'Kg',
+    value: 'SERVICE',
+    label: 'Serviço',
+  },
+  {
+    value: 'SPLIT',
+    label: 'SPLIT',
   },
 ];
 
@@ -103,8 +107,8 @@ export const ProductBasicRegister = () => {
         />
 
         <TextFieldController
-          id="description"
-          name="description"
+          id="description_item"
+          name="description_item"
           label="Descrição"
           placeholder="Descrição do produto"
         />

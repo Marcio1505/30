@@ -11,24 +11,24 @@ export const ProductTributosRegister = () => (
   <Row form xs="5">
     <Col xs="2">
       <TextFieldController
-        name="codigoFiscal"
-        id="codigoFiscal"
+        name="fiscal_code"
+        id="fiscal_code"
         label="Código Fiscal"
       />
       <TextFieldController
-        name="ICMSAliquota"
-        id="ICMSAliquota"
+        name="icms_aliquot"
+        id="icms_aliquot"
         label="ICMS Alíquota"
       />
-      <TextFieldController name="IPICIST" id="IPICIST" label="IPI CIST *" />
+      <TextFieldController name="ipi_cst" id="ipi_cst" label="IPI CIST *" />
       <TextFieldController
-        name="CFOPVendaEstado"
-        id="CFOPVendaEstado"
+        name="cfop_out_state"
+        id="cfop_out_state"
         label="CFOP Venda no estado *"
       />
       <TextFieldController
-        name="CFOPDevolucaoExterior"
-        id="CFOPDevolucaoExterior"
+        name="return_cfop_out_state"
+        id="return_cfop_out_state"
         label="CFOP Devolução no exterior"
       />
       <SelectSearchController
@@ -40,21 +40,25 @@ export const ProductTributosRegister = () => (
       />
     </Col>
     <Col>
-      <TextFieldController name="origem" id="origem" label="Origem" />
-      <TextFieldController name="PISCIST" id="PISCIST" label="PIS CIST *" />
       <TextFieldController
-        name="IPIAliquota"
-        id="IPIAliquota"
+        name="fiscal_origin"
+        id="fiscal_origin"
+        label="Origem"
+      />
+      <TextFieldController name="pis_cst" id="pis_cst" label="PIS CIST *" />
+      <TextFieldController
+        name="ipi_aliquot"
+        id="ipi_aliquot"
         label="IPI Alíquota"
       />
       <TextFieldController
-        name="CFOPDevolucaoEstado"
-        id="CFOPDevolucaoEstado"
+        name="return_cfop_in_state"
+        id="return_cfop_in_state"
         label="CFOP Devolução no estado *"
       />
       <TextFieldController
-        name="beneficioFiscal"
-        id="beneficioFiscal"
+        name="tax_benefit_code"
+        id="tax_benefit_code"
         label="Benefício Fiscal"
       />
 
@@ -67,26 +71,26 @@ export const ProductTributosRegister = () => (
       />
     </Col>
     <Col>
-      <TextFieldController name="NCM" id="NCM" label="NCM * " />
+      <TextFieldController name="ncm" id="ncm" label="NCM * " />
       <TextFieldController
-        name="PISAliquota"
-        id="PISAliquota"
+        name="pis_aliquot"
+        id="pis_aliquot"
         label="PIS Alíquota"
       />
       <TextFieldController
-        name="PIPCodigoEnquadramento"
-        id="PIPCodigoEnquadramento"
+        name="ipi_code"
+        id="ipi_code"
         label="PIP Código de Enquadramento"
       />
       <TextFieldController
-        name="CFOPVendaForaEstado"
-        id="CFOPVendaForaEstado"
-        label="PCFOP Venda fora do estado"
+        name="return_cfop_international"
+        id="return_cfop_international"
+        label="CFOP Venda fora do estado"
       />
 
       <TextFieldController
-        name="informacoesAdicional"
-        id="informacoesAdicional"
+        name="aditional_info"
+        id="aditional_info"
         label="Informações Adicional"
       />
 
@@ -98,34 +102,34 @@ export const ProductTributosRegister = () => (
     </Col>
     <Col>
       <TextFieldController
-        name="unidadeMedida"
-        id="unidadeMedida"
+        name="measurement_unit"
+        id="measurement_unit"
         label="Unidade de Medida"
       />
       <TextFieldController
-        name="COFINSCST"
-        id="COFINSCST"
+        name="cofins_cst"
+        id="cofins_cst"
         label="CONFINS CST *"
       />
 
       <TextFieldController name="fonte" id="fonte" label="Fonte" />
       <TextFieldController
-        name="CFOPDevolucaoForaEstado"
-        id="CFOPDevolucaoForaEstado"
+        name="return_cfop_international"
+        id="return_cfop_international"
         label="CFOP Devolução fora do estado *"
       />
 
       <FormGroup>
-        <Label for="descricao">Descrição</Label>
+        <Label for="description_service">Descrição</Label>
         <Field
           type="text"
-          name="descricao"
-          id="descricao"
+          name="description_service"
+          id="description_service"
           className="form-control"
         />
         <ErrorMessage
           className="text-danger"
-          name="descricao"
+          name="descricao_service"
           component="div"
         />
       </FormGroup>
@@ -137,28 +141,28 @@ export const ProductTributosRegister = () => (
     </Col>
     <Col>
       <TextFieldController
-        name="ICMSCST"
-        id="ICMSCST"
-        label="PICMS CST *"
+        name="icms_cst"
+        id="icms_cst"
+        label="ICMS CST *"
         type="text"
       />
       <TextFieldController
-        name="COFINSAliquota"
-        id="COFINSAliquota"
+        name="cofins_aliquot"
+        id="cofins_aliquot"
         label="COFINS Alíquota"
         type="text"
       />
 
       <TextFieldController
-        name="porcentagemTributoSimplificado"
-        id="porcentagemTributoSimplificado"
+        name="simplified_tax_percentage"
+        id="simplified_tax_percentage"
         label="Porcentagem Tributo Simplificado"
         type="text"
       />
 
       <TextFieldController
-        name="CFOPVendaExterior"
-        id="CFOPVendaExterior"
+        name="cfop_international"
+        id="cfop_international"
         label="CFOP Venda no exterior"
         type="text"
       />

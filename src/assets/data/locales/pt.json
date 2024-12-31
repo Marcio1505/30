@@ -493,6 +493,8 @@
   "contacts.email": "Email",
   "contacts.phone": "Telefone Comercial",
   "contacts.whatsapp": "Telefone/Whatsapp",
+  "note-entry": "Entrada de Notas",
+  "note-entry.list": "Adicionar Nota",
   "address.postal_code": "CEP",
   "address.street": "Rua/Avenida",
   "address.number": "Número",
