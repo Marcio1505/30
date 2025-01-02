@@ -158,7 +158,7 @@ const navigationConfig = [
   },
   {
     id: 'product-list',
-    title: 'products.list',
+    title: 'Produtos',
     type: 'item',
     icon: <Icon.Box size={20} />,
     permissions: ['admin', 'editor'],

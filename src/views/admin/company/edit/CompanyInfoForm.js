@@ -385,6 +385,359 @@ const CompanyInfoForm = ({
                                   </Label>
                                 </FormGroup>
                               </Row>
+                              {formik.values.client && (
+                                <>
+                                  <Col md="6" sm="12">
+                                    <FormGroup>
+                                      <Label for="state_taxpayer">
+                                        <FormattedMessage id="company.state_taxpayer" />
+                                      </Label>
+                                      <Select
+                                        options={stateTaxpayerOptions}
+                                        className="React"
+                                        classNamePrefix="select"
+                                        id="state_taxpayer"
+                                        onBlur={formik.handleBlur}
+                                        defaultValue={stateTaxpayerOptions.filter(
+                                          (state_taxpayer) =>
+                                            state_taxpayer.value ===
+                                            formik.initialValues.state_taxpayer
+                                        )}
+                                        onChange={(opt) => {
+                                          formik.setFieldValue(
+                                            'state_taxpayer',
+                                            opt.value
+                                          );
+                                        }}
+                                      />
+                                      {formik.errors.state_taxpayer &&
+                                      formik.touched.state_taxpayer ? (
+                                        <div className="invalid-tooltip mt-25">
+                                          {formik.errors.state_taxpayer}
+                                        </div>
+                                      ) : null}
+                                    </FormGroup>
+                                  </Col>
+                                  <Col md="6" sm="12">
+                                    <TextField
+                                      id="state_inscription"
+                                      onBlur={formik.handleBlur}
+                                      onChange={(e) =>
+                                        formik.setFieldValue(
+                                          'state_inscription',
+                                          e.target.value
+                                            ?.replace(/\W/g, '')
+                                            .toUpperCase()
+                                        )
+                                      }
+                                      value={formik.values.state_inscription}
+                                      placeholder={intl.formatMessage({
+                                        id: 'company.state_inscription',
+                                      })}
+                                      label={intl.formatMessage({
+                                        id: 'company.state_inscription',
+                                      })}
+                                      error={
+                                        formik.touched.state_inscription &&
+                                        formik.errors.state_inscription
+                                      }
+                                    />
+                                  </Col>
+                                  <Col md="6" sm="12">
+                                    <TextField
+                                      id="city_inscription"
+                                      onBlur={formik.handleBlur}
+                                      onChange={(e) =>
+                                        formik.setFieldValue(
+                                          'city_inscription',
+                                          e.target.value
+                                            ?.replace(/\W/g, '')
+                                            .toUpperCase()
+                                        )
+                                      }
+                                      value={formik.values.city_inscription}
+                                      placeholder={intl.formatMessage({
+                                        id: 'company.city_inscription',
+                                      })}
+                                      label={intl.formatMessage({
+                                        id: 'company.city_inscription',
+                                      })}
+                                      error={
+                                        formik.touched.city_inscription &&
+                                        formik.errors.city_inscription
+                                      }
+                                    />
+                                  </Col>
+                                  <Col md="6" sm="12">
+                                    <FormGroup>
+                                      <Label for="special_taxation_regime">
+                                        <FormattedMessage id="company.special_taxation_regime" />
+                                      </Label>
+                                      <Select
+                                        options={
+                                          availablesSpecialTaxationRegime || []
+                                        }
+                                        className="React"
+                                        classNamePrefix="select"
+                                        id="special_taxation_regime"
+                                        onBlur={formik.handleBlur}
+                                        defaultValue={availablesSpecialTaxationRegime.filter(
+                                          (specialTaxationRegime) =>
+                                            specialTaxationRegime.value ===
+                                            formik.initialValues
+                                              .special_taxation_regime
+                                        )}
+                                        onChange={(opt) => {
+                                          formik.setFieldValue(
+                                            'special_taxation_regime',
+                                            opt.value
+                                          );
+                                        }}
+                                      />
+                                      {formik.errors.special_taxation_regime &&
+                                      formik.touched.special_taxation_regime ? (
+                                        <div className="invalid-tooltip mt-25">
+                                          {
+                                            formik.errors
+                                              .special_taxation_regime
+                                          }
+                                        </div>
+                                      ) : null}
+                                    </FormGroup>
+                                  </Col>
+                                  <Col md="6" sm="12">
+                                    <TextField
+                                      id="markup"
+                                      onBlur={formik.handleBlur}
+                                      onChange={formik.handleChange}
+                                      value={formik.values.markup}
+                                      placeholder={intl.formatMessage({
+                                        id: 'Markup',
+                                      })}
+                                      label={intl.formatMessage({
+                                        id: 'Markup',
+                                      })}
+                                      error={
+                                        formik.touched.markup &&
+                                        formik.errors.markup
+                                      }
+                                    />
+                                  </Col>
+                                </>
+                              )}
+
+                              {formik.values.supplier && (
+                                <>
+                                  <Col md="6" sm="12">
+                                    <TextField
+                                      id="company_name"
+                                      onBlur={formik.handleBlur}
+                                      onChange={formik.handleChange}
+                                      value={formik.values.company_name}
+                                      placeholder={intl.formatMessage({
+                                        id: 'company.company_name',
+                                      })}
+                                      label={intl.formatMessage({
+                                        id: 'company.company_name',
+                                      })}
+                                      error={
+                                        formik.touched.company_name &&
+                                        formik.errors.company_name
+                                      }
+                                    />
+                                  </Col>
+                                  <Col md="6" sm="12">
+                                    <FormGroup>
+                                      <Label for="category">
+                                        <FormattedMessage id="company.category" />
+                                      </Label>
+                                      <Select
+                                        options={categories}
+                                        className="React"
+                                        classNamePrefix="select"
+                                        id="category"
+                                        onBlur={formik.handleBlur}
+                                        defaultValue={categories.filter(
+                                          (category) =>
+                                            category.value ===
+                                            formik.initialValues.category_id
+                                        )}
+                                        onChange={(opt) => {
+                                          formik.setFieldValue(
+                                            'category_id',
+                                            opt.value
+                                          );
+                                        }}
+                                      />
+                                      {formik.errors.category_id &&
+                                      formik.touched.category_id ? (
+                                        <div className="invalid-tooltip mt-25">
+                                          {formik.errors.category_id}
+                                        </div>
+                                      ) : null}
+                                    </FormGroup>
+                                  </Col>
+                                  <Col md="6" sm="12">
+                                    <TextField
+                                      id="foreign_identifier"
+                                      onBlur={formik.handleBlur}
+                                      onChange={formik.handleChange}
+                                      value={formik.values.foreign_identifier}
+                                      placeholder={intl.formatMessage({
+                                        id: 'company.foreign_identifier',
+                                      })}
+                                      label={intl.formatMessage({
+                                        id: 'company.foreign_identifier',
+                                      })}
+                                      error={
+                                        formik.touched.foreign_identifier &&
+                                        formik.errors.foreign_identifier
+                                      }
+                                    />
+                                  </Col>
+                                  <Col md="6" sm="12">
+                                    <TextField
+                                      id="monthly_revenue"
+                                      onBlur={formik.handleBlur}
+                                      value={formatMoney(
+                                        formik.values.monthly_revenue
+                                      )}
+                                      onChange={(e) =>
+                                        formik.setFieldValue(
+                                          'monthly_revenue',
+                                          getMonetaryValue(e.target.value)
+                                        )
+                                      }
+                                      placeholder="0,00"
+                                      label={intl.formatMessage({
+                                        id: 'company.monthly_revenue',
+                                      })}
+                                      error={get(
+                                        formik.errors,
+                                        'monthly_revenue'
+                                      )}
+                                    />
+                                  </Col>
+                                  <Col md="6" sm="12">
+                                    <TextField
+                                      id="registration_date"
+                                      onBlur={formik.handleBlur}
+                                      onChange={formik.handleChange}
+                                      value={formik.values.registration_date}
+                                      placeholder={intl.formatMessage({
+                                        id: 'Data de Cadastro',
+                                      })}
+                                      label={intl.formatMessage({
+                                        id: 'Data de Cadastro',
+                                      })}
+                                      error={
+                                        formik.touched.registration_date &&
+                                        formik.errors.registration_date
+                                      }
+                                    />
+                                  </Col>
+                                  <Col md="6" sm="12">
+                                    <TextField
+                                      id="last_update_date"
+                                      onBlur={formik.handleBlur}
+                                      onChange={formik.handleChange}
+                                      value={formik.values.last_update_date}
+                                      placeholder={intl.formatMessage({
+                                        id: 'Data da última alteração',
+                                      })}
+                                      label={intl.formatMessage({
+                                        id: 'Data da última alteração',
+                                      })}
+                                      error={
+                                        formik.touched.last_update_date &&
+                                        formik.errors.last_update_date
+                                      }
+                                    />
+                                  </Col>
+                                </>
+                              )}
+                              <Row>
+                                <Col md="6" sm="12">
+                                  <TextField
+                                    id="credit_limit"
+                                    onBlur={formik.handleBlur}
+                                    onChange={(e) =>
+                                      formik.setFieldValue(
+                                        'credit_limit',
+                                        getMonetaryValue(e.target.value)
+                                      )
+                                    }
+                                    value={formatMoney(
+                                      formik.values.credit_limit
+                                    )}
+                                    placeholder={intl.formatMessage({
+                                      id: 'company.credit_limit',
+                                    })}
+                                    label={intl.formatMessage({
+                                      id: 'company.credit_limit',
+                                    })}
+                                    error={
+                                      formik.touched.credit_limit &&
+                                      formik.errors.credit_limit
+                                    }
+                                  />
+                                </Col>
+                                <Col md="6" sm="12">
+                                  <TextField
+                                    id="payment_method"
+                                    onBlur={formik.handleBlur}
+                                    onChange={formik.handleChange}
+                                    value={formik.values.payment_method}
+                                    placeholder={intl.formatMessage({
+                                      id: 'company.payment_method',
+                                    })}
+                                    label={intl.formatMessage({
+                                      id: 'company.payment_method',
+                                    })}
+                                    error={
+                                      formik.touched.payment_method &&
+                                      formik.errors.payment_method
+                                    }
+                                  />
+                                </Col>
+                                <Col md="6" sm="12">
+                                  <TextField
+                                    id="payment_term"
+                                    onBlur={formik.handleBlur}
+                                    onChange={formik.handleChange}
+                                    value={formik.values.payment_term}
+                                    placeholder={intl.formatMessage({
+                                      id: 'company.payment_term',
+                                    })}
+                                    label={intl.formatMessage({
+                                      id: 'company.payment_term',
+                                    })}
+                                    error={
+                                      formik.touched.payment_term &&
+                                      formik.errors.payment_term
+                                    }
+                                  />
+                                </Col>
+                                <Col md="6" sm="12">
+                                  <TextField
+                                    id="observation"
+                                    type="textarea"
+                                    onBlur={formik.handleBlur}
+                                    onChange={formik.handleChange}
+                                    value={formik.values.observation}
+                                    placeholder={intl.formatMessage({
+                                      id: 'company.observation',
+                                    })}
+                                    label={intl.formatMessage({
+                                      id: 'company.observation',
+                                    })}
+                                    error={
+                                      formik.touched.observation &&
+                                      formik.errors.observation
+                                    }
+                                  />
+                                </Col>
+                              </Row>
                             </Row>
                           )}
                           {Boolean(

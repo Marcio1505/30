@@ -149,8 +149,7 @@ const PurchaseOrderList = ({ currentCompanyId }) => {
       <Row className="app-user-list">
         <Col md="8" sm="12">
           <Breadcrumbs
-            breadCrumbTitle={<FormattedMessage id="purchases-order" />}
-            breadCrumbActive={<FormattedMessage id="purchases-order.list" />}
+            breadCrumbTitle={intl.formatMessage({ id: 'button.purchase' })}
           />
         </Col>
 
@@ -163,7 +162,7 @@ const PurchaseOrderList = ({ currentCompanyId }) => {
                   color="primary"
                   onClick={() => history.push('purchase-order/edit')}
                 >
-                  <FormattedMessage id="button.create.purchases-order" />
+                  Adicionar pedido de compra
                 </Button.Ripple>
               </PermissionGate>
             </CardBody>

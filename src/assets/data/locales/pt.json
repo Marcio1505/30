@@ -245,6 +245,7 @@
   "button.list.sale": "Listar Vendas",
   "button.import.sale": "Importar Vendas",
   "button.create.purchase": "Adicionar Compra",
+  "button.purchase": "Pedido de Compra",
   "button.edit.purchase": "Editar Compra",
   "button.list.purchase": "Listar Compras",
   "button.dowloadPdf.invoice": "Baixar PDFs",

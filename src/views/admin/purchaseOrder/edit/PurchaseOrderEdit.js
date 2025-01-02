@@ -32,14 +32,10 @@ const PurchaseOrderEdit = ({ currentCompanyId }) => {
         <Row className="app-user-list">
           <Col md="8" sm="12">
             <Breadcrumbs
-              breadCrumbTitle={<FormattedMessage id="purchases-order" />}
-              breadCrumbParents={[
-                {
-                  name: intl.formatMessage({ id: 'purchases-order.list' }),
-                  link: '/admin/product/list',
-                },
-              ]}
-              breadCrumbActive={<FormattedMessage id="purchases-order.edit" />}
+              breadCrumbTitle={intl.formatMessage({ id: 'button.purchase' })}
+              breadCrumbActive={intl.formatMessage({
+                id: 'button.create.purchase',
+              })}
             />
           </Col>
         </Row>
