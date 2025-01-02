@@ -5,8 +5,8 @@ import {
   Button,
   Row,
   Col,
-  Modal,
-  ModalHeader,
+  Card,
+  CardBody,
   ModalBody,
   ModalFooter,
   Alert,
@@ -71,14 +71,41 @@ const NoteEntry = ({ currentCompanyId }) => {
           />
         </Col>
       </Row>
-      <div className="text-center">
-        <Dropzone
-          getUploadParams={getUploadParams}
-          onChangeStatus={handleChangeStatus}
-          onSubmit={handleSubmit}
-          accept="image/*,audio/*,video/*"
-        />
-      </div>
+      <Card>
+        <CardBody className="pt-2">
+          <div className="text-center">
+            <Dropzone
+              getUploadParams={getUploadParams}
+              onChangeStatus={handleChangeStatus}
+              inputContent="Arraste e solte arquivos ou clique para selecionar"
+              submitButtonContent="Enviar Arquivos"
+              maxFiles={1}
+              onSubmit={handleSubmit}
+              accept="image/*,audio/*,video/*"
+              styles={{
+                dropzone: {
+                  backgroundColor: '#f8f8f8',
+                  borderColor: '#36bba4',
+                  borderStyle: 'dashed',
+                }, // Cor de fundo e borda
+                inputLabel: {
+                  color: '#626262',
+                  fontSize: '18px',
+                  fontWeight: 'lighter',
+                },
+                submitButton: {
+                  backgroundColor: '#36bba4',
+                  color: '#fff',
+                  borderRadius: '5px',
+                  position: 'absolute', // Posiciona de forma absoluta
+                  bottom: '10px', // Define a distância do fundo
+                  left: '10px', // Define a distância da lateral direita
+                },
+              }}
+            />
+          </div>
+        </CardBody>
+      </Card>
     </PermissionGate>
   );
 };

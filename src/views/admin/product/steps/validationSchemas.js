@@ -21,26 +21,26 @@ export const validationSchemas = [
     ),
     precoVenda: Yup.number(),
     opcoesVenda: Yup.string(),
-    description: Yup.string(),
+    description_item: Yup.string(),
     product_type: Yup.string().required('Tipo é obrigatório'),
     group: Yup.string(), // Changed 'grupo' to 'group'
   }),
   Yup.object().shape({
-    codigoFiscal: Yup.string(),
+    fiscal_code: Yup.string(),
     origem: Yup.string(),
-    NCM: Yup.string().required('NCM é obrigatório'),
-    unidadeMedida: Yup.string(),
+    ncm: Yup.string().required('NCM é obrigatório'),
+    measurement_unit: Yup.string(),
     ICMSCST: Yup.string().required('ICMS CST é obrigatório'),
     ICMSAliquota: Yup.string(),
     PISCIST: Yup.string().required('PIS CIST é obrigatório'),
-    PISAliquota: Yup.string(),
-    COFINSCST: Yup.string().required('COFINS CST é obrigatório'),
-    COFINSAliquota: Yup.string(),
+    pis_aliquot: Yup.string(),
+    cofins_cst: Yup.string().required('COFINS CST é obrigatório'),
+    cofins_aliquot: Yup.string(),
     IPICIST: Yup.string().required('IPI CIST é obrigatório'),
-    IPIAliquota: Yup.string(),
-    PIPCodigoEnquadramento: Yup.string(),
+    ipi_aliquot: Yup.string(),
+    ipi_code: Yup.string(),
     fonte: Yup.string(),
-    porcentagemTributoSimplificado: Yup.string(),
+    simplified_tax_percentage: Yup.string(),
     CFOPVendaEstado: Yup.string().required(
       'CFOP Venda no estado é obrigatório'
     ),
@@ -48,13 +48,13 @@ export const validationSchemas = [
       'CFOP Devolução no estado é obrigatório'
     ),
     CFOPVendaForaEstado: Yup.string(),
-    CFOPDevolucaoForaEstado: Yup.string().required(
+    return_cfop_international: Yup.string().required(
       'CFOP Devolução fora do estado é obrigatório'
     ),
     CFOPVendaExterior: Yup.string(),
     CFOPDevolucaoExterior: Yup.string(),
     beneficioFiscal: Yup.string(),
-    informacoesAdicional: Yup.string(),
+    aditional_info: Yup.string(),
     unidadeCompra: Yup.string(),
     unidadeVenda: Yup.string(),
     fatorConversao: Yup.string(),
